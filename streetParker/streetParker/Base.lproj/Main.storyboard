@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="istockphoto-861919652-612x612" translatesAutoresizingMaskIntoConstraints="NO" id="032-Wt-YLT">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZVV-yE-MnG">
+                                <rect key="frame" x="115" y="104" width="184" height="46.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-i7-Vi7">
+                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="46.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="34"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Parker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J3D-DE-Wfz">
+                                        <rect key="frame" x="87.5" y="0.0" width="96.5" height="46.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="34"/>
+                                        <color key="textColor" red="1" green="0.75241821066818781" blue="0.048876255584936024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tde-Sf-jhr">
+                                <rect key="frame" x="32" y="298" width="350" height="300"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="lwn-LC-AUf">
+                                        <rect key="frame" x="15" y="15" width="320" height="270"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EJI-F0-7Gk" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="76.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
+                                                <state key="normal" title="Signup With Facebook">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRu-EK-QOh" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="96.5" width="320" height="77"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
+                                                <state key="normal" title="Signup With Instagram">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9My-Wy-XGb" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="193.5" width="320" height="76.5"/>
+                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                                <state key="normal" title="Signup With Email">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.24147366751269039" green="0.24147366751269039" blue="0.24147366751269039" alpha="0.248046875" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="350" id="8he-rH-guG"/>
+                                    <constraint firstItem="lwn-LC-AUf" firstAttribute="leading" secondItem="tde-Sf-jhr" secondAttribute="leading" constant="15" id="IPF-CS-xoW"/>
+                                    <constraint firstAttribute="trailing" secondItem="lwn-LC-AUf" secondAttribute="trailing" constant="15" id="QTE-E8-NlO"/>
+                                    <constraint firstItem="lwn-LC-AUf" firstAttribute="top" secondItem="tde-Sf-jhr" secondAttribute="top" constant="15" id="Wgk-H9-mLT"/>
+                                    <constraint firstAttribute="bottom" secondItem="lwn-LC-AUf" secondAttribute="bottom" constant="15" id="c93-2l-kIK"/>
+                                    <constraint firstAttribute="height" constant="300" id="hcx-df-Ilk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="032-Wt-YLT" secondAttribute="trailing" id="1RY-2X-WFB"/>
+                            <constraint firstItem="032-Wt-YLT" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="8bN-di-bhg"/>
+                            <constraint firstAttribute="bottom" secondItem="032-Wt-YLT" secondAttribute="bottom" id="C2C-dJ-bvD"/>
+                            <constraint firstItem="tde-Sf-jhr" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Nhs-of-99u"/>
+                            <constraint firstItem="tde-Sf-jhr" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ebu-Bg-K1n"/>
+                            <constraint firstItem="032-Wt-YLT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="fPA-ql-EAA"/>
+                            <constraint firstItem="ZVV-yE-MnG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jin-jk-Uex"/>
+                            <constraint firstItem="ZVV-yE-MnG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="60" id="yHF-bB-J0r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="viewss" destination="tde-Sf-jhr" id="Jvq-yK-Sku"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="20.758928571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="eXH-kd-kTL">
+            <objects>
+                <viewController id="YEb-CY-9PY" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Dq0-Na-0Bc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="suz-Bg-f7y"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nQD-jH-OIE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1020" y="21"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="istockphoto-861919652-612x612" width="612" height="408"/>
+    </resources>
+</document>
