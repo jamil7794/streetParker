@@ -16,9 +16,12 @@
 		A6BB7811237C8FD10092A463 /* customizedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB7810237C8FD10092A463 /* customizedButton.swift */; };
 		A6BB7813237D2C6B0092A463 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6BB7812237D2C6B0092A463 /* GoogleService-Info.plist */; };
 		A6D20D9D237D9757002D5580 /* Dataservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20D9C237D9757002D5580 /* Dataservice.swift */; };
-		A6D20D9F237D9F52002D5580 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20D9E237D9F52002D5580 /* ChatController.swift */; };
+		A6D20D9F237D9F52002D5580 /* ChatVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20D9E237D9F52002D5580 /* ChatVC.swift */; };
 		A6D20DA6237DA85F002D5580 /* SigninVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DA5237DA85F002D5580 /* SigninVC.swift */; };
 		A6D20DA8237DAE58002D5580 /* UIViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DA7237DAE58002D5580 /* UIViewExt.swift */; };
+		A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */; };
+		A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DAC237EE731002D5580 /* Authservice.swift */; };
+		A6D20DAF237F26B4002D5580 /* FindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DAE237F26B4002D5580 /* FindVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,9 +38,12 @@
 		A6BB7810237C8FD10092A463 /* customizedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = customizedButton.swift; sourceTree = "<group>"; };
 		A6BB7812237D2C6B0092A463 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A6D20D9C237D9757002D5580 /* Dataservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataservice.swift; sourceTree = "<group>"; };
-		A6D20D9E237D9F52002D5580 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		A6D20D9E237D9F52002D5580 /* ChatVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatVC.swift; sourceTree = "<group>"; };
 		A6D20DA5237DA85F002D5580 /* SigninVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninVC.swift; sourceTree = "<group>"; };
 		A6D20DA7237DAE58002D5580 /* UIViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExt.swift; sourceTree = "<group>"; };
+		A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insetTxtField.swift; sourceTree = "<group>"; };
+		A6D20DAC237EE731002D5580 /* Authservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authservice.swift; sourceTree = "<group>"; };
+		A6D20DAE237F26B4002D5580 /* FindVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,7 @@
 		A6BB77FC237C5D910092A463 /* streetParker */ = {
 			isa = PBXGroup;
 			children = (
+				A6D20DAB237EE715002D5580 /* Services */,
 				A6D20DA0237D9F5C002D5580 /* Controllers */,
 				A6BB780F237C8FB50092A463 /* views */,
 				A6BB77FD237C5D910092A463 /* AppDelegate.swift */,
@@ -90,7 +97,6 @@
 				A6BB7806237C5D980092A463 /* LaunchScreen.storyboard */,
 				A6BB7809237C5D980092A463 /* Info.plist */,
 				A6BB7812237D2C6B0092A463 /* GoogleService-Info.plist */,
-				A6D20D9C237D9757002D5580 /* Dataservice.swift */,
 			);
 			path = streetParker;
 			sourceTree = "<group>";
@@ -100,6 +106,7 @@
 			children = (
 				A6BB7810237C8FD10092A463 /* customizedButton.swift */,
 				A6D20DA7237DAE58002D5580 /* UIViewExt.swift */,
+				A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -108,10 +115,20 @@
 			isa = PBXGroup;
 			children = (
 				A6BB77FF237C5D910092A463 /* AuthVC.swift */,
-				A6D20D9E237D9F52002D5580 /* ChatController.swift */,
+				A6D20D9E237D9F52002D5580 /* ChatVC.swift */,
 				A6D20DA5237DA85F002D5580 /* SigninVC.swift */,
+				A6D20DAE237F26B4002D5580 /* FindVC.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A6D20DAB237EE715002D5580 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A6D20D9C237D9757002D5580 /* Dataservice.swift */,
+				A6D20DAC237EE731002D5580 /* Authservice.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		ABDA183B2F3C95CB308850F0 /* Frameworks */ = {
@@ -242,10 +259,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6BB7800237C5D910092A463 /* AuthVC.swift in Sources */,
+				A6D20DAF237F26B4002D5580 /* FindVC.swift in Sources */,
 				A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */,
 				A6D20DA8237DAE58002D5580 /* UIViewExt.swift in Sources */,
 				A6BB7811237C8FD10092A463 /* customizedButton.swift in Sources */,
-				A6D20D9F237D9F52002D5580 /* ChatController.swift in Sources */,
+				A6D20D9F237D9F52002D5580 /* ChatVC.swift in Sources */,
+				A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */,
+				A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */,
 				A6D20DA6237DA85F002D5580 /* SigninVC.swift in Sources */,
 				A6D20D9D237D9757002D5580 /* Dataservice.swift in Sources */,
 			);
