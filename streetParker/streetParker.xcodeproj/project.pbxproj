@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		535F152AF3FBBFFC8E6F2C9C /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A63E7A4D2047855F0035FE4 /* Pods_streetParker.framework */; };
+		A63DC94B23809D1300747BDB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63DC94A23809D1300747BDB /* SWRevealViewController.m */; };
 		A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FD237C5D910092A463 /* AppDelegate.swift */; };
 		A6BB7800237C5D910092A463 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FF237C5D910092A463 /* AuthVC.swift */; };
 		A6BB7803237C5D910092A463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BB7801237C5D910092A463 /* Main.storyboard */; };
@@ -28,6 +29,8 @@
 		3A63E7A4D2047855F0035FE4 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9CB933E0A194483707A210 /* Pods-streetParker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.debug.xcconfig"; sourceTree = "<group>"; };
 		898630E53F473148EA3BA36A /* Pods-streetParker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.release.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.release.xcconfig"; sourceTree = "<group>"; };
+		A63DC94923809D0F00747BDB /* SWRevealViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
+		A63DC94A23809D1300747BDB /* SWRevealViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		A6BB77FA237C5D910092A463 /* streetParker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = streetParker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BB77FD237C5D910092A463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6BB77FF237C5D910092A463 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				A6BB7810237C8FD10092A463 /* customizedButton.swift */,
 				A6D20DA7237DAE58002D5580 /* UIViewExt.swift */,
 				A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */,
+				A63DC94923809D0F00747BDB /* SWRevealViewController.h */,
+				A63DC94A23809D1300747BDB /* SWRevealViewController.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -266,6 +271,7 @@
 				A6D20D9F237D9F52002D5580 /* ChatVC.swift in Sources */,
 				A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */,
 				A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */,
+				A63DC94B23809D1300747BDB /* SWRevealViewController.m in Sources */,
 				A6D20DA6237DA85F002D5580 /* SigninVC.swift in Sources */,
 				A6D20D9D237D9757002D5580 /* Dataservice.swift in Sources */,
 			);
