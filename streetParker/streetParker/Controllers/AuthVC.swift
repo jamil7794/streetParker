@@ -22,6 +22,18 @@ class AuthVC: UIViewController {
         self.viewss.layer.cornerRadius = 15.0
     }
 
-
+    @IBAction func signInWithFacebook(_ sender: Any) {
+        
+    }
+    
+    @IBAction func signInWithInstagram(_ sender: Any) {
+        
+    }
+    
+    @IBAction func signInWithEmail(_ sender: Any) {
+        let signinVC = storyboard?.instantiateViewController(withIdentifier: "SigninVC")
+        present(signinVC!, animated: true, completion: nil)
+    }
+    
 }
 

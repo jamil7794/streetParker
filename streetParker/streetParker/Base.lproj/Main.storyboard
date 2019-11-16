@@ -50,6 +50,9 @@
                                                 <state key="normal" title="Signup With Facebook">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signInWithFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Cny-Rx-v2w"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YRu-EK-QOh" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="96.5" width="320" height="77"/>
@@ -57,6 +60,9 @@
                                                 <state key="normal" title="Signup With Instagram">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="signInWithInstagram:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NJK-d8-Tq7"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9My-Wy-XGb" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="193.5" width="320" height="76.5"/>
@@ -65,6 +71,7 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <connections>
+                                                    <action selector="signInWithEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6O-7S-gQ4"/>
                                                     <segue destination="Rfg-vO-MT0" kind="popoverPresentation" popoverAnchorView="9My-Wy-XGb" id="cYZ-K7-PCY">
                                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                                     </segue>
@@ -108,7 +115,7 @@
         <!--SigninVC-->
         <scene sceneID="TQx-DX-yP8">
             <objects>
-                <viewController id="Rfg-vO-MT0" customClass="SigninVC" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SigninVC" id="Rfg-vO-MT0" customClass="SigninVC" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Vw-Lz-Qs6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -138,7 +145,7 @@
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-vq-fGk" customClass="insetTxtField" customModule="streetParker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.2600465412369839" green="0.2600465412369839" blue="0.2600465412369839" alpha="0.79920269691780821" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Xhs-Ny-EAI"/>
                                         </constraints>
@@ -148,7 +155,7 @@
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L6C-P0-72X" customClass="insetTxtField" customModule="streetParker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="94" width="374" height="50"/>
-                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" red="0.25235301331820226" green="0.25235301331820226" blue="0.25235301331820226" alpha="0.79858732876712324" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="SNp-Xj-f6W"/>
                                         </constraints>
