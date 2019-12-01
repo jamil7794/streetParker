@@ -63,16 +63,36 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.2)
   - leveldb-library (1.20)
+  - Mapbox-iOS-SDK (5.1.0)
+  - MapboxCoreNavigation (0.35.0):
+    - MapboxDirections.swift (~> 0.28.0)
+    - MapboxMobileEvents (~> 0.9.3)
+    - MapboxNavigationNative (~> 6.2.1)
+    - Turf (~> 0.3.0)
+  - MapboxDirections.swift (0.28.0):
+    - Polyline (~> 4.2)
+  - MapboxMobileEvents (0.9.5)
+  - MapboxNavigation (0.35.0):
+    - Mapbox-iOS-SDK (~> 5.1)
+    - MapboxCoreNavigation (= 0.35.0)
+    - MapboxSpeech (~> 0.1.0)
+    - Solar (~> 2.1)
+  - MapboxNavigationNative (6.2.1)
+  - MapboxSpeech (0.1.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Polyline (4.2.1)
+  - Solar (2.1.0)
+  - Turf (0.3.0)
 
 DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
+  - MapboxNavigation
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -87,7 +107,17 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
+    - Mapbox-iOS-SDK
+    - MapboxCoreNavigation
+    - MapboxDirections.swift
+    - MapboxMobileEvents
+    - MapboxNavigation
+    - MapboxNavigationNative
+    - MapboxSpeech
     - nanopb
+    - Polyline
+    - Solar
+    - Turf
 
 SPEC CHECKSUMS:
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
@@ -101,8 +131,18 @@ SPEC CHECKSUMS:
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
+  Mapbox-iOS-SDK: 4106f0f6808a0362233a703fb22369b3af3e9b8c
+  MapboxCoreNavigation: 89eadd5864a32144043231247fc3bd6900843213
+  MapboxDirections.swift: bec8771badfbdd55a0194649a4194b2c2cb15b96
+  MapboxMobileEvents: f6c21b2e59066c5c7093585de7c15adae3b63da0
+  MapboxNavigation: 718528e4594c87e2702b6bb9e64a863975b00ccf
+  MapboxNavigationNative: 11dc22140f4698d3f26989f2b6379dc81ef0d4c1
+  MapboxSpeech: 59b3984d3f433a443d24acf53097f918c5cc70f9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
+  Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
+  Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
 
-PODFILE CHECKSUM: 44e0ee8fbd1834ab4812d021184cfc92f14769db
+PODFILE CHECKSUM: 5d959771bf2eb28de2ba1ed9e5faba9030e4f477
 
 COCOAPODS: 1.5.3
