@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gMH-6J-O7l">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gMH-6J-O7l">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -117,14 +115,14 @@
             <objects>
                 <viewController storyboardIdentifier="SigninVC" id="Rfg-vO-MT0" customClass="SigninVC" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Vw-Lz-Qs6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="istockphoto-861919652-612x612" translatesAutoresizingMaskIntoConstraints="NO" id="cRx-OP-lNW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21q-0p-jgm">
-                                <rect key="frame" x="115" y="104" width="184" height="46.5"/>
+                                <rect key="frame" x="115" y="60" width="184" height="46.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajU-Ok-rkI">
                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="46.5"/>
@@ -141,7 +139,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-lo-Mru">
-                                <rect key="frame" x="20" y="170.5" width="374" height="144"/>
+                                <rect key="frame" x="20" y="126.5" width="374" height="144"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-vq-fGk" customClass="insetTxtField" customModule="streetParker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -179,10 +177,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsZ-C1-MPh">
-                                <rect key="frame" x="0.0" y="314.5" width="414" height="581.5"/>
+                                <rect key="frame" x="0.0" y="270.5" width="414" height="571.5"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-JA-NJi" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="521.5" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="511.5" width="414" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="aWb-b7-swg"/>
                                         </constraints>
@@ -253,7 +251,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="6W9-NO-5bP">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6W9-NO-5bP" id="0Am-q2-QL4">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
@@ -286,7 +284,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Cex-hM-UXb"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chat" id="J98-kh-Afp"/>
+                    <tabBarItem key="tabBarItem" title="Chat" image="chatIcon" id="J98-kh-Afp"/>
                     <connections>
                         <outlet property="menuBtn" destination="XsA-8y-6vP" id="jMN-w0-RAW"/>
                     </connections>
@@ -380,7 +378,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="YLF-OT-8Et"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Find" id="oCO-bm-hS9"/>
+                    <tabBarItem key="tabBarItem" title="Find" image="findIcon" id="oCO-bm-hS9"/>
                     <connections>
                         <outlet property="button" destination="8RE-9b-Pjs" id="o07-fb-big"/>
                     </connections>
@@ -412,6 +410,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chatIcon" width="20" height="20"/>
+        <image name="findIcon" width="20" height="20"/>
         <image name="istockphoto-861919652-612x612" width="612" height="408"/>
         <image name="smackBurger" width="40" height="40"/>
     </resources>
