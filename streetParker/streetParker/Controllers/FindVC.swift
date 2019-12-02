@@ -11,16 +11,43 @@ import Firebase
 //import MapboxCoreNavigation
 import MapboxNavigation
 //import MapboxDirections
+import CoreBluetooth
 
-class FindVC: UIViewController, MGLMapViewDelegate {
-
+class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate  {
+    
+    var centralManager: CBCentralManager!
+    var carBluetooth: CBPeripheral!
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var view2: UIView!
     var mapView: NavigationMapView!
     var navigateButton : UIButton!
     //var directionRoute: Route?
-    
     let disneylandcoord = CLLocationCoordinate2D(latitude: 40.7366, longitude: -73.8201)
+    let serviceUUID = 
+    
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
+        switch central.state {
+        case .poweredOn:
+           
+            break
+        case .poweredOff:
+            print("Bluetooth is Off.")
+            break
+        case .resetting:
+            break
+        case .unauthorized:
+            break
+        case .unsupported:
+            break
+        case .unknown:
+            break
+        default:
+            break
+        }
+    }
+    
+    
+    
     
     override func viewDidLoad() {
 
@@ -45,11 +72,11 @@ class FindVC: UIViewController, MGLMapViewDelegate {
         mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         
-        
-        addButton()
-        
-        
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        addButton()
     }
     
     
@@ -127,3 +154,4 @@ class FindVC: UIViewController, MGLMapViewDelegate {
 //        }
 //    }
 }
+
