@@ -23,7 +23,6 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     var navigateButton : UIButton!
     //var directionRoute: Route?
     let disneylandcoord = CLLocationCoordinate2D(latitude: 40.7366, longitude: -73.8201)
-    let serviceUUID = 
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
