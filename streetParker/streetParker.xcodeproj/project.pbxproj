@@ -3,11 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		535F152AF3FBBFFC8E6F2C9C /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3A63E7A4D2047855F0035FE4 /* Pods_streetParker.framework */; };
+		1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */; };
 		A63DC95B23826DF600747BDB /* burgerMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63DC95A23826DF600747BDB /* burgerMenuVC.swift */; };
 		A63DC96323826E6100747BDB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63DC96223826E6100747BDB /* SWRevealViewController.m */; };
 		A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FD237C5D910092A463 /* AppDelegate.swift */; };
@@ -28,7 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A63E7A4D2047855F0035FE4 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9CB933E0A194483707A210 /* Pods-streetParker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.debug.xcconfig"; sourceTree = "<group>"; };
 		898630E53F473148EA3BA36A /* Pods-streetParker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.release.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.release.xcconfig"; sourceTree = "<group>"; };
 		A63DC95A23826DF600747BDB /* burgerMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = burgerMenuVC.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				535F152AF3FBBFFC8E6F2C9C /* Pods_streetParker.framework in Frameworks */,
+				1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +163,7 @@
 		ABDA183B2F3C95CB308850F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3A63E7A4D2047855F0035FE4 /* Pods_streetParker.framework */,
+				5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				26EF321E342A40C3E6B63782 /* [CP] Embed Pods Frameworks */,
+				BC66E3ABDDA8C763C188D436 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,52 +239,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		26EF321E342A40C3E6B63782 /* [CP] Embed Pods Frameworks */ = {
+		BC66E3ABDDA8C763C188D436 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework",
-				"${PODS_ROOT}/Mapbox-iOS-SDK/dynamic/Mapbox.framework.dSYM",
-				"${BUILT_PRODUCTS_DIR}/MapboxCoreNavigation/MapboxCoreNavigation.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxDirections.swift/MapboxDirections.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxMobileEvents/MapboxMobileEvents.framework",
-				"${BUILT_PRODUCTS_DIR}/MapboxNavigation/MapboxNavigation.framework",
-				"${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework",
-				"${PODS_ROOT}/MapboxNavigationNative/MapboxNavigationNative.framework.dSYM",
-				"${BUILT_PRODUCTS_DIR}/MapboxSpeech/MapboxSpeech.framework",
-				"${BUILT_PRODUCTS_DIR}/Polyline/Polyline.framework",
-				"${BUILT_PRODUCTS_DIR}/Solar/Solar.framework",
-				"${BUILT_PRODUCTS_DIR}/Turf/Turf.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Mapbox.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/Mapbox.framework.dSYM",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxCoreNavigation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxDirections.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxMobileEvents.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigation.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxNavigationNative.framework",
-				"${DWARF_DSYM_FOLDER_PATH}/MapboxNavigationNative.framework.dSYM",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MapboxSpeech.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Polyline.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Solar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Turf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E17F0EA0D215919A2B60D7BF /* [CP] Check Pods Manifest.lock */ = {

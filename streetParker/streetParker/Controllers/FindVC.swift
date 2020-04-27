@@ -10,7 +10,6 @@ import UIKit
 import Firebase
 //import MapboxCoreNavigation
 import MapboxNavigation
-//import MapboxDirections
 import CoreBluetooth
 
 class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate  {
@@ -27,7 +26,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-           
+            print("carbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetooth")
             break
         case .poweredOff:
             print("Bluetooth is Off.")
@@ -60,6 +59,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         self.view2.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view2.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        centralManager = CBCentralManager(delegate: self, queue: nil)
         
         mapView = NavigationMapView(frame: view2.bounds)
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

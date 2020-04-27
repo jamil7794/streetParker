@@ -1,90 +1,106 @@
 PODS:
-  - Firebase/Auth (6.4.0):
+  - Firebase/Auth (6.23.0):
     - Firebase/CoreOnly
-    - FirebaseAuth (~> 6.2.0)
-  - Firebase/Core (6.4.0):
+    - FirebaseAuth (~> 6.5.2)
+  - Firebase/Core (6.23.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 6.0.3)
-  - Firebase/CoreOnly (6.4.0):
-    - FirebaseCore (= 6.0.4)
-  - Firebase/Database (6.4.0):
+    - FirebaseAnalytics (= 6.4.2)
+  - Firebase/CoreOnly (6.23.0):
+    - FirebaseCore (= 6.6.7)
+  - Firebase/Database (6.23.0):
     - Firebase/CoreOnly
-    - FirebaseDatabase (~> 6.0.0)
-  - FirebaseAnalytics (6.0.3):
-    - FirebaseCore (~> 6.0)
-    - FirebaseInstanceID (~> 4.2)
-    - GoogleAppMeasurement (= 6.0.3)
+    - FirebaseDatabase (~> 6.2.0)
+  - FirebaseAnalytics (6.4.2):
+    - FirebaseCore (~> 6.6)
+    - FirebaseInstallations (~> 1.2)
+    - GoogleAppMeasurement (= 6.4.2)
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3)
-  - FirebaseAuth (6.2.0):
+    - nanopb (= 0.3.9011)
+  - FirebaseAuth (6.5.2):
     - FirebaseAuthInterop (~> 1.0)
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/AppDelegateSwizzler (~> 6.2)
-    - GoogleUtilities/Environment (~> 6.2)
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.5)
+    - GoogleUtilities/Environment (~> 6.5)
     - GTMSessionFetcher/Core (~> 1.1)
-  - FirebaseAuthInterop (1.0.0)
-  - FirebaseCore (6.0.4):
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/Logger (~> 6.0)
-  - FirebaseDatabase (6.0.0):
+  - FirebaseAuthInterop (1.1.0)
+  - FirebaseCore (6.6.7):
+    - FirebaseCoreDiagnostics (~> 1.2)
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+  - FirebaseCoreDiagnostics (1.2.4):
+    - FirebaseCoreDiagnosticsInterop (~> 1.2)
+    - GoogleDataTransportCCTSupport (~> 3.0)
+    - GoogleUtilities/Environment (~> 6.5)
+    - GoogleUtilities/Logger (~> 6.5)
+    - nanopb (~> 0.3.901)
+  - FirebaseCoreDiagnosticsInterop (1.2.0)
+  - FirebaseDatabase (6.2.0):
     - FirebaseAuthInterop (~> 1.0)
     - FirebaseCore (~> 6.0)
-    - leveldb-library (~> 1.18)
-  - FirebaseInstanceID (4.2.1):
-    - FirebaseCore (~> 6.0)
-    - GoogleUtilities/Environment (~> 6.0)
-    - GoogleUtilities/UserDefaults (~> 6.0)
-  - GoogleAppMeasurement (6.0.3):
+    - leveldb-library (~> 1.22)
+  - FirebaseInstallations (1.2.0):
+    - FirebaseCore (~> 6.6)
+    - GoogleUtilities/Environment (~> 6.6)
+    - GoogleUtilities/UserDefaults (~> 6.6)
+    - PromisesObjC (~> 1.2)
+  - GoogleAppMeasurement (6.4.2):
     - GoogleUtilities/AppDelegateSwizzler (~> 6.0)
     - GoogleUtilities/MethodSwizzler (~> 6.0)
     - GoogleUtilities/Network (~> 6.0)
     - "GoogleUtilities/NSData+zlib (~> 6.0)"
-    - nanopb (~> 0.3)
-  - GoogleUtilities/AppDelegateSwizzler (6.2.3):
+    - nanopb (= 0.3.9011)
+  - GoogleDataTransport (6.0.0)
+  - GoogleDataTransportCCTSupport (3.0.0):
+    - GoogleDataTransport (~> 6.0)
+    - nanopb (~> 0.3.901)
+  - GoogleUtilities/AppDelegateSwizzler (6.6.0):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
     - GoogleUtilities/Network
-  - GoogleUtilities/Environment (6.2.3)
-  - GoogleUtilities/Logger (6.2.3):
+  - GoogleUtilities/Environment (6.6.0):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (6.6.0):
     - GoogleUtilities/Environment
-  - GoogleUtilities/MethodSwizzler (6.2.3):
+  - GoogleUtilities/MethodSwizzler (6.6.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/Network (6.2.3):
+  - GoogleUtilities/Network (6.6.0):
     - GoogleUtilities/Logger
     - "GoogleUtilities/NSData+zlib"
     - GoogleUtilities/Reachability
-  - "GoogleUtilities/NSData+zlib (6.2.3)"
-  - GoogleUtilities/Reachability (6.2.3):
+  - "GoogleUtilities/NSData+zlib (6.6.0)"
+  - GoogleUtilities/Reachability (6.6.0):
     - GoogleUtilities/Logger
-  - GoogleUtilities/UserDefaults (6.2.3):
+  - GoogleUtilities/UserDefaults (6.6.0):
     - GoogleUtilities/Logger
-  - GTMSessionFetcher/Core (1.2.2)
-  - leveldb-library (1.20)
-  - Mapbox-iOS-SDK (5.1.0)
-  - MapboxCoreNavigation (0.35.0):
-    - MapboxDirections.swift (~> 0.28.0)
-    - MapboxMobileEvents (~> 0.9.3)
+  - GTMSessionFetcher/Core (1.3.1)
+  - leveldb-library (1.22)
+  - Mapbox-iOS-SDK (5.5.1)
+  - MapboxCoreNavigation (0.39.1):
+    - MapboxDirections.swift (~> 0.30.0)
+    - MapboxMobileEvents (~> 0.9.5)
     - MapboxNavigationNative (~> 6.2.1)
     - Turf (~> 0.3.0)
-  - MapboxDirections.swift (0.28.0):
+  - MapboxDirections.swift (0.30.0):
     - Polyline (~> 4.2)
   - MapboxMobileEvents (0.9.5)
-  - MapboxNavigation (0.35.0):
-    - Mapbox-iOS-SDK (~> 5.1)
-    - MapboxCoreNavigation (= 0.35.0)
+  - MapboxNavigation (0.39.1):
+    - Mapbox-iOS-SDK (= 5.5.1)
+    - MapboxCoreNavigation (= 0.39.1)
     - MapboxSpeech (~> 0.1.0)
     - Solar (~> 2.1)
   - MapboxNavigationNative (6.2.1)
   - MapboxSpeech (0.1.1)
-  - nanopb (0.3.901):
-    - nanopb/decode (= 0.3.901)
-    - nanopb/encode (= 0.3.901)
-  - nanopb/decode (0.3.901)
-  - nanopb/encode (0.3.901)
+  - nanopb (0.3.9011):
+    - nanopb/decode (= 0.3.9011)
+    - nanopb/encode (= 0.3.9011)
+  - nanopb/decode (0.3.9011)
+  - nanopb/encode (0.3.9011)
   - Polyline (4.2.1)
+  - PromisesObjC (1.2.8)
   - Solar (2.1.0)
   - Turf (0.3.0)
 
@@ -95,15 +111,19 @@ DEPENDENCIES:
   - MapboxNavigation
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Firebase
     - FirebaseAnalytics
     - FirebaseAuth
     - FirebaseAuthInterop
     - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCoreDiagnosticsInterop
     - FirebaseDatabase
-    - FirebaseInstanceID
+    - FirebaseInstallations
     - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleDataTransportCCTSupport
     - GoogleUtilities
     - GTMSessionFetcher
     - leveldb-library
@@ -116,33 +136,39 @@ SPEC REPOS:
     - MapboxSpeech
     - nanopb
     - Polyline
+    - PromisesObjC
     - Solar
     - Turf
 
 SPEC CHECKSUMS:
-  Firebase: 9445469655a98e9010737f4bc4720e5bda465873
-  FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
-  FirebaseAuth: 68cfa47997f53d29ce978e7a615fb78d7925fcbe
-  FirebaseAuthInterop: 0ffa57668be100582bb7643d4fcb7615496c41fc
-  FirebaseCore: 7ea99e200f0024262650be56623fbe6a7bef1707
-  FirebaseDatabase: f48e067716864be2b855cf716b927ef375d6cfa0
-  FirebaseInstanceID: 9782fcfb89e4d7da76cc28eac4b8543dc7be4a4b
-  GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
-  GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
-  GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
-  leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  Mapbox-iOS-SDK: 4106f0f6808a0362233a703fb22369b3af3e9b8c
-  MapboxCoreNavigation: 89eadd5864a32144043231247fc3bd6900843213
-  MapboxDirections.swift: bec8771badfbdd55a0194649a4194b2c2cb15b96
+  Firebase: 585ae467b3edda6a5444e788fda6888f024d8d6f
+  FirebaseAnalytics: 558f7a03d19de451093032c806f39d5f9dff096e
+  FirebaseAuth: e50319ecc114acf93c2b9581e15d6604ddd7eeb2
+  FirebaseAuthInterop: a0f37ae05833af156e72028f648d313f7e7592e9
+  FirebaseCore: a2788a0d5f6c1dff17b8f79b4a73654a8d4bfdbd
+  FirebaseCoreDiagnostics: b59c024493a409f8aecba02c99928d0d8431d159
+  FirebaseCoreDiagnosticsInterop: 296e2c5f5314500a850ad0b83e9e7c10b011a850
+  FirebaseDatabase: cbf2b9efe39b3f113616a2f1f140839f49d797e0
+  FirebaseInstallations: 2119fb3e46b0a88bfdbf12562f855ee3252462fa
+  GoogleAppMeasurement: 2253e99c1f22638cf234c059144660c338ad76c3
+  GoogleDataTransport: 061fe7d9b476710e3cd8ea51e8e07d8b67c2b420
+  GoogleDataTransportCCTSupport: 0f39025e8cf51f168711bd3fb773938d7e62ddb5
+  GoogleUtilities: 39530bc0ad980530298e9c4af8549e991fd033b1
+  GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  Mapbox-iOS-SDK: 051d78eb8beb4bd0601212a18ea3ba8608bae32f
+  MapboxCoreNavigation: cf6ec1b4d3920f9178f4b3557750327f76acdb1a
+  MapboxDirections.swift: 1c6df988c24b753888ebd9976d7c98632501a413
   MapboxMobileEvents: f6c21b2e59066c5c7093585de7c15adae3b63da0
-  MapboxNavigation: 718528e4594c87e2702b6bb9e64a863975b00ccf
+  MapboxNavigation: 45fa17b2dfd023b0b8ea78990d872b7e50c3d78f
   MapboxNavigationNative: 11dc22140f4698d3f26989f2b6379dc81ef0d4c1
   MapboxSpeech: 59b3984d3f433a443d24acf53097f918c5cc70f9
-  nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   Polyline: 0e9890790292741c8186201a536b6bb6a78d02dd
+  PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
   Solar: 2dc6e7cc39186cb0c8228fa08df76fb50c7d8f24
   Turf: c6bdf62d6a70c647874f295dd1cf4eefc0c3e9e6
 
-PODFILE CHECKSUM: 5d959771bf2eb28de2ba1ed9e5faba9030e4f477
+PODFILE CHECKSUM: c09fffdd94dc7974ad49e2b728c6a613354d9133
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1

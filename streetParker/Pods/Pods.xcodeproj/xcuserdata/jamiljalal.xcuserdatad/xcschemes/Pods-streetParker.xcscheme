@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1100"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DDED260E09EBBDBD60B5293E15198C40"
+               BlueprintIdentifier = "6EEA974B83DE6736356254B597DE4763"
                BuildableName = "Pods_streetParker.framework"
                BlueprintName = "Pods-streetParker"
                ReferencedContainer = "container:Pods.xcodeproj">
