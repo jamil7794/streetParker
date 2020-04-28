@@ -11,6 +11,7 @@ import Firebase
 //import MapboxCoreNavigation
 import MapboxNavigation
 import CoreBluetooth
+import AVFoundation
 
 class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     
@@ -25,13 +26,14 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     let disneylandcoord = CLLocationCoordinate2D(latitude: 40.7366, longitude: -73.8201)
     let serviceUUID = CBUUID(string: "780A")
     var allPeripherals: [CBPeripheral]?
+    var blueoothh = AVAudioSession.sharedInstance()
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
             print("Bluetooth is on.")
-            let options: [String: Any] = [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(value: false)]
-            centralManager.scanForPeripherals(withServices: nil, options: options)
+//            let options: [String: Any] = [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(value: false)]
+//            centralManager.scanForPeripherals(withServices: nil, options: nil)
             break
         case .poweredOff:
             print("Bluetooth is Off.")
@@ -71,8 +73,13 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
 //        //mapView.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
 //        mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+        
         centralManager = CBCentralManager(delegate: self, queue: nil)
-
+        if selectDevice(audioSession: blueoothh) == true {
+            print("Peripheral exist")
+        }else{
+            print("peripheral doesn't exist")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -111,10 +118,28 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
 
     }
     
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral.name)
-    }
+//    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+//        print(peripheral.name)
+//    }
     
+    func selectDevice(audioSession: AVAudioSession) -> Bool {
+
+        var bluetoothExist = false
+
+        for output in audioSession.currentRoute.outputs {
+            print(output)
+
+//            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP {
+//                bluetoothExist = true
+//            }
+        }
+
+        if bluetoothExist == true {
+            return true
+        }else{
+            return false
+        }
+    }
     
 }
 
