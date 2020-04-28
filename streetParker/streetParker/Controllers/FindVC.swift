@@ -12,21 +12,26 @@ import Firebase
 import MapboxNavigation
 import CoreBluetooth
 
-class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate  {
+class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     
     var centralManager: CBCentralManager!
-    var carBluetooth: CBPeripheral!
+    var periph: CBPeripheral!
+    
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var view2: UIView!
     var mapView: NavigationMapView!
     var navigateButton : UIButton!
     //var directionRoute: Route?
     let disneylandcoord = CLLocationCoordinate2D(latitude: 40.7366, longitude: -73.8201)
+    let serviceUUID = CBUUID(string: "780A")
+    var allPeripherals: [CBPeripheral]?
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            print("carbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetoothcarbluetooth")
+            print("Bluetooth is on.")
+            let options: [String: Any] = [CBCentralManagerScanOptionAllowDuplicatesKey: NSNumber(value: false)]
+            centralManager.scanForPeripherals(withServices: nil, options: options)
             break
         case .poweredOff:
             print("Bluetooth is Off.")
@@ -45,8 +50,6 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     }
     
     
-    
-    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -59,19 +62,17 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         self.view2.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view2.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
+//        mapView = NavigationMapView(frame: view2.bounds)
+//        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        view2.addSubview(mapView)
+//        mapView.delegate = self
+//        mapView.showsUserLocation = true
+//        mapView.setUserTrackingMode(.follow, animated: true)
+//        //mapView.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+//        mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        
-        mapView = NavigationMapView(frame: view2.bounds)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view2.addSubview(mapView)
-        mapView.delegate = self
-        mapView.showsUserLocation = true
-        mapView.setUserTrackingMode(.follow, animated: true)
-        //mapView.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
-        mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
-        
-        
-       
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -107,50 +108,13 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         let routeCam = mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: inset)
         mapView.setCamera(routeCam, animated: true)
         mapView.addAnnotation(annotation)
-//        calculateRoute(from: (mapView.userLocation!.coordinate), to: disneylandcoord) { (route, error) in
-//            if error != nil {
-//                print("error getting route")
-//            }
-//        }
+
     }
     
-//    func calculateRoute(from originCoor: CLLocationCoordinate2D, to destinationCoor: CLLocationCoordinate2D, completion: @escaping (Route?, Error?) -> Void){
-//
-//        let origin = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Start")
-//        let destination = Waypoint(coordinate: originCoor, coordinateAccuracy: -1, name: "Finish")
-//
-//        let options = NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .automobileAvoidingTraffic)
-//
-//        Directions.shared.calculate(options) { (waypoints, route, error) in
-//            self.directionRoute = route?.first
-//            self.drawRoute(route: self.directionRoute!)
-//            //drae line
-//
-//            let coordinateBounds = MGLCoordinateBounds(sw: destinationCoor, ne: originCoor)
-//            let inset = UIEdgeInsets(top: 58, left: 58, bottom: 58, right: 58)
-//            let routeCam = self.mapView.cameraThatFitsCoordinateBounds(coordinateBounds, edgePadding: inset)
-//            self.mapView.setCamera(routeCam, animated: true)
-//        }
-//    }
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
+        print(peripheral.name)
+    }
     
-//    func drawRoute(route: Route){
-//        guard route.coordinateCount > 0 else {return}
-//        let routeCoordinates = route.coordinates!
-//        let polyline = MGLPolylineFeature(coordinates: routeCoordinates, count: route.coordinateCount)
-//
-//
-//        if let source = mapView.style?.source(withIdentifier: "route-source") as? MGLShapeSource{
-//            source.shape = polyline
-//        } else {
-//            let source = MGLShapeSource(identifier: "route-source", features: [polyline], options: nil)
-//
-//            let linestyle = MGLLineStyleLayer(identifier: "route-style", source: source)
-//            linestyle.lineColor = NSExpression(forConstantValue: UIColor(displayP3Red: 1, green: 1, blue: 1, alpha: 1))
-//            linestyle.lineWidth = NSExpression(forConstantValue: 4.0)
-//
-//            mapView.style?.addSource(source)
-//            mapView.style?.addLayer(linestyle)
-//        }
-//    }
+    
 }
 
