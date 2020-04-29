@@ -27,6 +27,8 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     let serviceUUID = CBUUID(string: "780A")
     var allPeripherals: [CBPeripheral]?
     var blueoothh = AVAudioSession.sharedInstance()
+    var peripheralUID: String!
+    var peripheralName: String!
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
@@ -76,9 +78,10 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
         if selectDevice(audioSession: blueoothh) == true {
-            print("Peripheral exist")
+            print("HandsFree exist: \(peripheralName!)")
+            print("Peripheral UID: \(peripheralUID!)")
         }else{
-            print("peripheral doesn't exist")
+            print("HandsFree doesn't exist")
         }
     }
     
@@ -125,13 +128,20 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     func selectDevice(audioSession: AVAudioSession) -> Bool {
 
         var bluetoothExist = false
-
+        
+       
         for output in audioSession.currentRoute.outputs {
             print(output)
 
-//            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP {
-//                bluetoothExist = true
-//            }
+            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP {
+                    bluetoothExist = true
+                peripheralName = output.portName
+                peripheralUID = output.uid
+            }else{
+                    bluetoothExist = false
+            }
+                
+            
         }
 
         if bluetoothExist == true {
