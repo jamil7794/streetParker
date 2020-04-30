@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class SigninVC: UIViewController {
 
@@ -26,6 +27,11 @@ class SigninVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("x")
+    }
+    
     
     
     @IBAction func closePressed(_ sender: Any) {
@@ -35,10 +41,11 @@ class SigninVC: UIViewController {
     @IBAction func signInButtonWasPressed(_ sender: Any) {
         if emailField.text != nil && passwordField.text != nil {
             Authservice.instance.loginUser(withEmail: emailField.text!, andPassword: passwordField.text!) { (success, error) in
+                
                 if success {
                     print("Logged In successfully")
                     self.dismiss(animated: true, completion: nil)
-                    
+          
                 }else{
                     print(error?.localizedDescription as! String)
                 }
@@ -48,6 +55,7 @@ class SigninVC: UIViewController {
                     if success {
                         Authservice.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
                             self.dismiss(animated: true, completion: nil)
+                            
                             print("Successfully registered user")
                         })
                     }else{

@@ -133,7 +133,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         for output in audioSession.currentRoute.outputs {
             print(output)
 
-            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP {
+            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP || output.portType == AVAudioSession.Port.carAudio || output.portType == AVAudioSession.Port.usbAudio{
                     bluetoothExist = true
                 peripheralName = output.portName
                 peripheralUID = output.uid

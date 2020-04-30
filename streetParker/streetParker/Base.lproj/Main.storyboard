@@ -11,6 +11,7 @@
         <!--AuthVC-->
         <scene sceneID="tne-QT-ifu">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AuthVC" id="BYZ-38-t0r" customClass="AuthVC" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -70,9 +71,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="signInWithEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="C6O-7S-gQ4"/>
-                                                    <segue destination="Rfg-vO-MT0" kind="popoverPresentation" popoverAnchorView="9My-Wy-XGb" id="cYZ-K7-PCY">
-                                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                                    </segue>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -106,7 +104,6 @@
                         <outlet property="viewss" destination="tde-Sf-jhr" id="Jvq-yK-Sku"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1506" y="17"/>
         </scene>
@@ -115,14 +112,14 @@
             <objects>
                 <viewController storyboardIdentifier="SigninVC" id="Rfg-vO-MT0" customClass="SigninVC" customModule="streetParker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2Vw-Lz-Qs6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="istockphoto-861919652-612x612" translatesAutoresizingMaskIntoConstraints="NO" id="cRx-OP-lNW">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="21q-0p-jgm">
-                                <rect key="frame" x="115" y="60" width="184" height="46.5"/>
+                                <rect key="frame" x="115" y="104" width="184" height="46.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajU-Ok-rkI">
                                         <rect key="frame" x="0.0" y="0.0" width="87.5" height="46.5"/>
@@ -139,7 +136,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="44" translatesAutoresizingMaskIntoConstraints="NO" id="Zme-lo-Mru">
-                                <rect key="frame" x="20" y="126.5" width="374" height="144"/>
+                                <rect key="frame" x="20" y="170.5" width="374" height="144"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sLH-vq-fGk" customClass="insetTxtField" customModule="streetParker" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
@@ -177,10 +174,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TsZ-C1-MPh">
-                                <rect key="frame" x="0.0" y="270.5" width="414" height="571.5"/>
+                                <rect key="frame" x="0.0" y="314.5" width="414" height="581.5"/>
                                 <subviews>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nTw-JA-NJi" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="511.5" width="414" height="60"/>
+                                        <rect key="frame" x="0.0" y="521.5" width="414" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="aWb-b7-swg"/>
                                         </constraints>
@@ -222,6 +219,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6nm-D8-rSh"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Wz4-ik-odb"/>
                     <connections>
                         <outlet property="emailField" destination="sLH-vq-fGk" id="odd-Mh-Xtc"/>
                         <outlet property="passwordField" destination="L6C-P0-72X" id="KCu-sN-pie"/>
@@ -230,7 +228,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G0j-ax-fWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-630" y="17"/>
+            <point key="canvasLocation" x="-630.43478260869574" y="16.741071428571427"/>
         </scene>
         <!--Chat-->
         <scene sceneID="ddB-ex-eYH">
@@ -329,6 +327,9 @@
                                 <rect key="frame" x="24" y="461" width="53" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Signout"/>
+                                <connections>
+                                    <action selector="signOutWasPressed:" destination="fg5-3N-5ph" eventType="touchUpInside" id="Ds2-KN-nxf"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

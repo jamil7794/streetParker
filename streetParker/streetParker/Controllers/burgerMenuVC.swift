@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class burgerMenuVC: UIViewController {
 
@@ -17,14 +18,16 @@ class burgerMenuVC: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func signOutWasPressed(_ sender: Any) {
+        Authservice.instance.signOut()
+        if #available(iOS 13.0, *) {
+            print("Logged Out")
+            let AuthVC = storyboard?.instantiateViewController(identifier: "AuthVC") as? AuthVC
+            self.present(AuthVC!, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+        
     }
-    */
-
+    
 }

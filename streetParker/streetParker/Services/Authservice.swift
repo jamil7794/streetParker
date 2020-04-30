@@ -42,6 +42,7 @@ class Authservice {
         do {
             try! Auth.auth().signOut()
         } catch {
+            print(error.localizedDescription)
         }
     }
 }

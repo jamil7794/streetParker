@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Firebase
 
 class AuthVC: UIViewController {
     
     
     
     @IBOutlet weak var viewss: UIView!
+    
+    override func viewDidAppear(_ animated: Bool) {
+           super.viewDidAppear(animated)
+
+           print(Auth.auth().currentUser)
+           if Auth.auth().currentUser != nil {
+               dismiss(animated: true, completion: nil)
+           }
+           
+    }
     
     
     
@@ -21,6 +32,7 @@ class AuthVC: UIViewController {
         // Do any additional setup after loading the view.
         self.viewss.layer.cornerRadius = 15.0
     }
+    
 
     @IBAction func signInWithFacebook(_ sender: Any) {
         
