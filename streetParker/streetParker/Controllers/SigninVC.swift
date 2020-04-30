@@ -35,7 +35,7 @@ class SigninVC: UIViewController {
     
     
     @IBAction func closePressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        
     }
     
     @IBAction func signInButtonWasPressed(_ sender: Any) {
@@ -44,8 +44,7 @@ class SigninVC: UIViewController {
                 
                 if success {
                     print("Logged In successfully")
-                    self.dismiss(animated: true, completion: nil)
-          
+                    self.performSegue(withIdentifier: "SigninToAuth", sender: self)
                 }else{
                     print(error?.localizedDescription as! String)
                 }
@@ -55,8 +54,8 @@ class SigninVC: UIViewController {
                     if success {
                         Authservice.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
                             self.dismiss(animated: true, completion: nil)
-                            
                             print("Successfully registered user")
+                            self.performSegue(withIdentifier: "SigninToAuth", sender: self)
                         })
                     }else{
                         print(registrationUser?.localizedDescription as! String)

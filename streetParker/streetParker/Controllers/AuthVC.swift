@@ -15,18 +15,6 @@ class AuthVC: UIViewController {
     
     @IBOutlet weak var viewss: UIView!
     
-    override func viewDidAppear(_ animated: Bool) {
-           super.viewDidAppear(animated)
-
-           print(Auth.auth().currentUser)
-           if Auth.auth().currentUser != nil {
-               dismiss(animated: true, completion: nil)
-           }
-           
-    }
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -43,8 +31,14 @@ class AuthVC: UIViewController {
     }
     
     @IBAction func signInWithEmail(_ sender: Any) {
-        let signinVC = storyboard?.instantiateViewController(withIdentifier: "SigninVC")
-        present(signinVC!, animated: true, completion: nil)
+        performSegue(withIdentifier: "AuthToSign", sender: self)
+    }
+    
+    @IBAction func unwindfFromSigninVC(unwindSegue: UIStoryboardSegue){
+        print("Unwinded")
+        if Auth.auth().currentUser != nil {
+            dismiss(animated: true, completion: nil)
+        }
     }
     
 }
