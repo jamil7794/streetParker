@@ -29,7 +29,7 @@ class SigninVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("x")
+        print("viewWillAppear SigninVC")
     }
     
     
@@ -44,7 +44,10 @@ class SigninVC: UIViewController {
                 
                 if success {
                     print("Logged In successfully")
-                    self.performSegue(withIdentifier: "SigninToAuth", sender: self)
+//                    //self.performSegue(withIdentifier: "SigninToAuth", sender: self)
+//                    self.presentedViewController?.dismiss(animated: true, completion: nil)
+//                    //self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
                 }else{
                     print(error?.localizedDescription as! String)
                 }

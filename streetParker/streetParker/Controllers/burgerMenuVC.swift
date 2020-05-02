@@ -8,13 +8,19 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class burgerMenuVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        //if Auth.auth().currentUser != nil {
+            let FBButton = FBLoginButton()
+            FBButton.center = view.center
+            view.addSubview(FBButton)
+        //}
+       
     }
     
 
@@ -31,3 +37,5 @@ class burgerMenuVC: UIViewController {
     }
     
 }
+
+

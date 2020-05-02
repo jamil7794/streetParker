@@ -8,6 +8,8 @@
 
 import UIKit
 import Firebase
+import FBSDKCoreKit
+import FBSDKLoginKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,10 +25,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC")
             window?.makeKeyAndVisible()
+            authVC.modalPresentationStyle = .fullScreen
+            //window?.rootViewController = authVC
             window?.rootViewController?.present(authVC, animated: true, completion: nil)
+            NotificationCenter.default.post(name: Notification.Name("signedOut"), object: nil)
         }
+        
+        UIApplication.shared.delegate?.window??.rootViewController = AuthVC()
+        
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+//        LoginManager().logIn(permissions: ["email"], from: self) { (result, err) in
+//
+//            self.loginBtn.stopLoadingAnimation()
+//            //Facebook login is complet after Two case, failer and success.
+//
+//            if err != nil {
+//                print("CustomFB Login Failed: ", err)
+//                return
+//            }
+//        }
+        
+        
+        
+        if let token = AccessToken.current, !token.isExpired {
+            // User is logged in, do work such as go to next view controller.
+           
+        }
+        
+        
         return true
     }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
+
+        ApplicationDelegate.shared.application(app, open: url, sourceApplication: options[UIApplication.OpenURLOptionsKey.sourceApplication] as? String,
+            annotation: options[UIApplication.OpenURLOptionsKey.annotation]
+        )
+
+
+
+    }
+    
+    
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
