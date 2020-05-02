@@ -26,12 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let authVC = storyboard.instantiateViewController(withIdentifier: "AuthVC")
             window?.makeKeyAndVisible()
             authVC.modalPresentationStyle = .fullScreen
-            //window?.rootViewController = authVC
+
             window?.rootViewController?.present(authVC, animated: true, completion: nil)
             NotificationCenter.default.post(name: Notification.Name("signedOut"), object: nil)
         }
         
-        UIApplication.shared.delegate?.window??.rootViewController = AuthVC()
         
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
         

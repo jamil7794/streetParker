@@ -9,8 +9,9 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import SafariServices
 
-class AuthVC: UIViewController {
+class AuthVC: UIViewController, SFSafariViewControllerDelegate {
     
     @IBOutlet weak var FBView: UIView!
     
@@ -37,10 +38,7 @@ class AuthVC: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        if let token = AccessToken.current, !token.isExpired {
-//            // User is logged in, do work such as go to next view controller.
-//            self.dismiss(animated: true, completion: nil)
-//        }
+        print("viewDidAppear AuthVC")
         
         if Auth.auth().currentUser != nil {
             self.dismiss(animated: true, completion: nil)
@@ -79,18 +77,17 @@ class AuthVC: UIViewController {
     
     @objc func FBAction(){
         //NotificationCenter.default.post(name: Notification.Name("FBPressed"), object: nil)
+        //self.dismiss(animated: true, completion: nil)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if #available(iOS 13.0, *) {
-            print("x")
-            if segue.destination.modalPresentationStyle == .formSheet {
-                segue.destination.modalPresentationStyle = .fullScreen
-            }
-        } else {
-            // Fallback on earlier versions
-        }
-    }
     
 }
+extension SFSafariViewController {
+    override open var modalPresentationStyle: UIModalPresentationStyle {
+        get { return .fullScreen}
+        set {super.modalPresentationStyle = newValue}
+    }
+}
+
+
 
