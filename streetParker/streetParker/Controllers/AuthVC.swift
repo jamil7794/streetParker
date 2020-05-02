@@ -22,15 +22,12 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate {
         self.viewss.layer.cornerRadius = 15.0
         let FBButton = FBLoginButton()
         FBButton.center = FBView.center
+        
         FBView.addSubview(FBButton)
         // Do any additional setup after loading the view.
     
         FBButton.addTarget(self, action: #selector(FBAction), for: .touchUpInside)
         
-        if let token = AccessToken.current,
-            !token.isExpired {
-            self.dismiss(animated: true, completion: nil)
-        }
     }
     
     
@@ -43,12 +40,12 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate {
         if Auth.auth().currentUser != nil {
             self.dismiss(animated: true, completion: nil)
         }
+        
+        if let token = AccessToken.current,
+            !token.isExpired {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
-    
-    override func viewDidDisappear(_ animated: Bool) {
-        print("viewDidDisappear AuthVC")
-    }
-    
     
 
     
