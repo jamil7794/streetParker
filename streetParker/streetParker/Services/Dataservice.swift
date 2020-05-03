@@ -36,4 +36,38 @@ class Dataservice{
     func uploadLocation(){
         
     }
+    
+    func printAllEmails(forEmail emaill: String, handler: @escaping (_ emailArray: [String]) -> ()){
+        
+        var emailArray = [String]()
+        REF_USERS.observe(.value) { (userSnapShot) in
+            // we gonna watch all the user
+            
+            guard let userSnapshot = userSnapShot.children.allObjects as? [DataSnapshot] else {return}
+            for user in userSnapshot {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                emailArray.append(email)
+            }
+            handler(emailArray)
+        }
+    }
+    
+    func getNameForEmail(forEmail em: String, handler: @escaping (_ name: String) -> ()){
+        
+        var name = String()
+        REF_USERS.observe(.value) { (userSnapShot) in
+            // we gonna watch all the user
+            
+            guard let userSnapshot = userSnapShot.children.allObjects as? [DataSnapshot] else {return}
+            for user in userSnapshot {
+                let email = user.childSnapshot(forPath: "email").value as! String
+                if em == email {
+                    let FIreName = user.childSnapshot(forPath: "Name").value as! String
+                    name = FIreName
+                    handler(name)
+                }
+            }
+            
+        }
+    }
 }

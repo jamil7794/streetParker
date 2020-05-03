@@ -35,6 +35,7 @@
 		A63DC96023826E6000747BDB /* streetParker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "streetParker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A63DC96123826E6100747BDB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		A63DC96223826E6100747BDB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A685BABF245E7FB000B1E7C2 /* streetParker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = streetParker.entitlements; sourceTree = "<group>"; };
 		A6BB77FA237C5D910092A463 /* streetParker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = streetParker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BB77FD237C5D910092A463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6BB77FF237C5D910092A463 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		A6BB77FC237C5D910092A463 /* streetParker */ = {
 			isa = PBXGroup;
 			children = (
+				A685BABF245E7FB000B1E7C2 /* streetParker.entitlements */,
 				A6FD3B342383C7CB001F8676 /* Model */,
 				A63DC95C23826DFE00747BDB /* Supporting Files */,
 				A6D20DAB237EE715002D5580 /* Services */,
@@ -179,7 +181,7 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				0574DC6FF46A4937126B05D0 /* [CP] Embed Pods Frameworks */,
+				B599EBCB88B9FA78D04AF80D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,7 +241,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0574DC6FF46A4937126B05D0 /* [CP] Embed Pods Frameworks */ = {
+		B599EBCB88B9FA78D04AF80D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -441,6 +443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = streetParker/streetParker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW3486MABY;
 				INFOPLIST_FILE = streetParker/Info.plist;
@@ -463,6 +466,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = streetParker/streetParker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW3486MABY;
 				INFOPLIST_FILE = streetParker/Info.plist;

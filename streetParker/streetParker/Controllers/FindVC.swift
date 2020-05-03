@@ -93,14 +93,14 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         super.viewDidAppear(animated)
         addButton()
         
-        let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
-
-        r.start(completionHandler: { (test, result, error) in
-            if(error == nil)
-            {
-                print(result)
-            }
-        })
+//        let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
+//
+//        r.start(completionHandler: { (test, result, error) in
+//            if(error == nil)
+//            {
+//                print(result)
+//            }
+//        })
         
     }
     

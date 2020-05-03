@@ -26,7 +26,21 @@ class Authservice {
         }
     }
     
-    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+    func registerFBUser(withEmail email: String, withName name: String, andPassword password: String, userCreationComplete: @escaping (_ status: Bool, _ error: Error?) -> ()){
+
+        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            guard let user = user else {
+                userCreationComplete(false, error)
+                return
+            }
+            
+            let userData = ["provider": user.user.providerID, "email": user.user.email, "Name": name]
+            Dataservice.instance.createDBUser(uid: user.user.uid, userData: userData)
+            userCreationComplete(true,nil)
+        }
+    }
+    
+    func loginFBUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
         
         Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
             if error != nil {
@@ -38,6 +52,19 @@ class Authservice {
         
     }
     
+    
+    
+    func loginUser(withEmail email: String, andPassword password: String, loginComplete: @escaping (_ status: Bool, _ error: Error?) -> ()) {
+        
+        Auth.auth().signIn(withEmail: email, password: password) { (user, error) in
+            if error != nil {
+                loginComplete(false, error)
+                return
+            }
+            loginComplete(true,nil)
+        }
+    }
+    
     func signOut(){
         do {
             try! Auth.auth().signOut()
@@ -45,4 +72,6 @@ class Authservice {
             print(error.localizedDescription)
         }
     }
+    
+
 }
