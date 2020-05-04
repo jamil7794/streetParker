@@ -55,7 +55,7 @@ class SigninVC: UIViewController {
                         Authservice.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
                             self.dismiss(animated: true, completion: nil)
                             print("Successfully registered user")
-                            self.performSegue(withIdentifier: "SigninToAuth", sender: self)
+                            //self.performSegue(withIdentifier: "SigninToAuth", sender: self)
                         })
                     }else{
                         print(registrationUser?.localizedDescription as! String)

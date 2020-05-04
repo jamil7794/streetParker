@@ -10,6 +10,8 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 
+
+
 class burgerMenuVC: UIViewController, LoginButtonDelegate{
     
     
@@ -24,48 +26,70 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
     var email: String?
     var id: String?
     var name: String?
+    var FBButton = FBLoginButton()
+    var mainView: UIViewController!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         //EXC_BREAKPOINT (code=1, subcode=0x102b452ac)
+        FBButton.delegate = self
         
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        if Auth.auth().currentUser != nil {
-//            signOutBTN.setTitle("Logout", for: .normal)
-//        }
-//
+        
+        if Auth.auth().currentUser != nil {
+            print("Current User email in BurgerMenuVC: " + (Auth.auth().currentUser?.email)!)
+        }else {
+            print("Current User email in BurgerMenuVC: nil")
+        }
         
         signOutBTN.layer.cornerRadius = 10
+        
+        
+        FBButton.frame = CGRect(x: 25, y: 600, width: 200, height: 40)
+        FBButton.isHidden = true
+        signOutBTN.isHidden = true
+    
         if let token = AccessToken.current,!token.isExpired {
+            
+            Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (namee) in
+                print("Dataservice.instance.getNameForEmail in BurgerMenuVC:" + namee)
+                self.nameLbl.setTitle(namee, for: .normal)
+            }
+            
+            FBButton.isHidden = false
             signOutBTN.isHidden = true
-            let FBButton = FBLoginButton()
-            FBButton.frame = CGRect(x: 25, y: 600, width: 200, height: 40)
-            nameLbl.setTitle(name, for: .normal)
+            Authservice.instance.signOut()
             view.addSubview(FBButton)
-            FBButton.delegate = self
+            
+            
         } else {
+            
+            print("email logged in burgerMenuVC as: " + (Auth.auth().currentUser?.email)!)
+            FBButton.removeFromSuperview()
+            FBButton.isHidden = true
             signOutBTN.isHidden = false
+            self.nameLbl.setTitle((Auth.auth().currentUser?.email)!, for: .normal)
             signOutBTN.setTitle("Logout", for: .normal)
         }
         
-        print(Auth.auth().currentUser?.uid)
     }
 
     @IBAction func signOutWasPressed(_ sender: Any) {
-        Authservice.instance.signOut()
+        //Authservice.instance.signOut()
         
         if Auth.auth().currentUser != nil {
             Authservice.instance.signOut()
+            print("Logged Out pressed")
         }
         
         if #available(iOS 13.0, *) {
-            print("Logged Out")
+            
             let authVC = storyboard?.instantiateViewController(identifier: "AuthVC") as? AuthVC
             authVC?.modalPresentationStyle = .fullScreen
             self.present(authVC!, animated: true, completion: nil)
@@ -95,7 +119,7 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
 //    }
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result: LoginManagerLoginResult?, error: Error?) {
-        print("LoginMenuVC LOgged in")
+        print("BurgerMenuVC LOgged in" + (Auth.auth().currentUser?.email)!)
     }
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {

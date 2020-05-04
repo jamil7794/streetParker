@@ -11,27 +11,40 @@ import Firebase
 import FBSDKLoginKit
 import SafariServices
 
+
+
 class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDelegate {
-  
+
     
     @IBOutlet weak var FBView: UIView!
     
     @IBOutlet weak var viewss: UIView!
-    var email: String?
+    var email =  String()
     var id: String?
-    var name: String?
+    var name = String()
+    var data: userContents?
+    var flag = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.viewss.layer.cornerRadius = 15.0
+        self.FBView.layer.cornerRadius = 15.0
         
         let FBButton = FBLoginButton()
+        FBView.layer.cornerRadius = 15.0
         FBButton.delegate = self
-        FBButton.center = FBView.center
+        //FBButton.center = FBView.center
+        FBButton.frame = CGRect(x: 0, y: 0, width: FBView.frame.width, height: FBView.frame.height)
         FBView.addSubview(FBButton)
         
+        if let token = AccessToken.current,
+            !token.isExpired {
+            self.dismiss(animated: true, completion: nil)
+        }
     
-        FBButton.addTarget(self, action: #selector(FBAction), for: .touchUpInside)
+       if Auth.auth().currentUser != nil {
+            self.dismiss(animated: true, completion: nil)
+        }
         
     }
     
@@ -40,20 +53,29 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("viewDidAppear AuthVC")
-        
         if Auth.auth().currentUser != nil {
             self.dismiss(animated: true, completion: nil)
         }
         
-//        if let token = AccessToken.current,
-//            !token.isExpired {
+//        if let presenter = presentingViewController as? FindVC {
+//            presenter.name = self.name
+//        }
+        
+//        if let token = AccessToken.current,!token.isExpired {
+//            if Auth.auth().currentUser != nil {
+//                print("Facbook user is already logged in")
+//            }else{
+//                print("Facbook user is not logged in")
+//            }
 //            self.dismiss(animated: true, completion: nil)
 //        }
+        
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
 
-    
+    }
+
     @IBAction func signInWithInstagram(_ sender: Any) {
         
     }
@@ -97,27 +119,41 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                 self.id = FBResult["id"] as! String
                 
                 
-                let randNum = Int.random(in: 1111111 ... 9999999)
                 let randString = "FBUser"
                 
-                Dataservice.instance.printAllEmails(forEmail: self.email!) { (emails) in
+                Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
                     for em in emails {
-                        if em == self.email! {
+                        if em == self.email {
                             
-                            Authservice.instance.loginFBUser(withEmail: self.email!, andPassword: randString) { (success, error) in
+                            Authservice.instance.loginFBUser(withEmail: self.email, andPassword: randString) { (success, error) in
                                 if success {
-                                    print("Facebook User Logged in")
+                                    print("AuthVC: Facebook User Logged in as " + self.name)
+//                                    let presenter = self.presentingViewController as? FindVC
+//                                    presenter?.name = self.name
+                                    
+                                    //print("presenter.name in AuthVC: " + (presenter?.name)!)
+                                    //self.delegate?.passData(data: self.name)
+                                    
+                              
+                                    self.dismiss(animated: true, completion: nil)
                                 }else{
                                     print("Facebook User Logging ERROR: " + error!.localizedDescription)
                                 }
                             }
                             
                         }else{
-                            print(em + "   " + self.email! + " not compatible")
-                            Authservice.instance.registerFBUser(withEmail: self.email!, withName: self.name!, andPassword: randString) { (success, error) in
+                            print(em + "   " + self.email + " not compatible")
+                            Authservice.instance.registerFBUser(withEmail: self.email, withName: self.name, andPassword: randString) { (success, error) in
                                 
                                 if success {
-                                    print("Facebook User Created: " + self.email!)
+                                    print("Facebook User Created: " + self.email)
+//                                    if let presenter = self.presentingViewController as? FindVC {
+//                                        presenter.name = self.name
+//                                    }
+                                    
+                                    
+                                    print("self.name in AuthVC: " + self.name)
+                                    self.dismiss(animated: true, completion: nil)
                                 }else{
                                     print("Facebook User Creation ERROR: " + error!.localizedDescription)
                                 }
@@ -143,7 +179,9 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                 
             }
         })
-        self.dismiss(animated: true, completion: nil)
+        
+        
+    
     
     }
     
@@ -151,7 +189,9 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         print("FB Logged Out")
     }
     
+    
 }
+
 extension SFSafariViewController {
     override open var modalPresentationStyle: UIModalPresentationStyle {
         get { return .fullScreen}

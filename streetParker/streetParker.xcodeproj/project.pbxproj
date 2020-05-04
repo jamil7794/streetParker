@@ -10,6 +10,8 @@
 		1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */; };
 		A63DC95B23826DF600747BDB /* burgerMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63DC95A23826DF600747BDB /* burgerMenuVC.swift */; };
 		A63DC96323826E6100747BDB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63DC96223826E6100747BDB /* SWRevealViewController.m */; };
+		A6506EA1245F3904005B2AB9 /* isAbleToPassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */; };
+		A6506EA3245F3C1D005B2AB9 /* userContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6506EA2245F3C1D005B2AB9 /* userContents.swift */; };
 		A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FD237C5D910092A463 /* AppDelegate.swift */; };
 		A6BB7800237C5D910092A463 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FF237C5D910092A463 /* AuthVC.swift */; };
 		A6BB7803237C5D910092A463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BB7801237C5D910092A463 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		A63DC96023826E6000747BDB /* streetParker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "streetParker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A63DC96123826E6100747BDB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		A63DC96223826E6100747BDB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isAbleToPassData.swift; sourceTree = "<group>"; };
+		A6506EA2245F3C1D005B2AB9 /* userContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userContents.swift; sourceTree = "<group>"; };
 		A685BABF245E7FB000B1E7C2 /* streetParker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = streetParker.entitlements; sourceTree = "<group>"; };
 		A6BB77FA237C5D910092A463 /* streetParker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = streetParker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BB77FD237C5D910092A463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -158,6 +162,8 @@
 			isa = PBXGroup;
 			children = (
 				A6FD3B352383C7EC001F8676 /* Message.swift */,
+				A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */,
+				A6506EA2245F3C1D005B2AB9 /* userContents.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -181,7 +187,7 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				B599EBCB88B9FA78D04AF80D /* [CP] Embed Pods Frameworks */,
+				D119AC7FADC6513D2EBA4F08 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,7 +247,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B599EBCB88B9FA78D04AF80D /* [CP] Embed Pods Frameworks */ = {
+		D119AC7FADC6513D2EBA4F08 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -288,8 +294,10 @@
 				A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */,
 				A6D20DA8237DAE58002D5580 /* UIViewExt.swift in Sources */,
 				A6BB7811237C8FD10092A463 /* customizedButton.swift in Sources */,
+				A6506EA1245F3904005B2AB9 /* isAbleToPassData.swift in Sources */,
 				A6D20D9F237D9F52002D5580 /* ChatVC.swift in Sources */,
 				A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */,
+				A6506EA3245F3C1D005B2AB9 /* userContents.swift in Sources */,
 				A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */,
 				A6D20DA6237DA85F002D5580 /* SigninVC.swift in Sources */,
 				A6FD3B362383C7EC001F8676 /* Message.swift in Sources */,

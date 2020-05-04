@@ -11,6 +11,8 @@ target 'streetParker' do
    pod 'Firebase/Database'
    pod 'Firebase/Auth'
    pod 'MapboxNavigation'
-   pod 'FBSDKLoginKit'
-
+   pod 'FBSDKLoginKit/Swift'
+   pod 'FBSDKLoginKit/Swift'
+   pod 'FBSDKCoreKit/Swift'
+   pod 'FBSDKShareKit/Swift'
 end

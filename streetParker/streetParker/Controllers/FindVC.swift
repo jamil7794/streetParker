@@ -17,8 +17,15 @@ import FBSDKLoginKit
 
 class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CBPeripheralDelegate {
     
+    
+    
+    
     var centralManager: CBCentralManager!
     var periph: CBPeripheral!
+    var name: String?
+    var email: String?
+    var user: userContents?
+    
     
     @IBOutlet weak var button: UIButton!
     @IBOutlet weak var view2: UIView!
@@ -91,7 +98,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        addButton()
+        //addButton()
         
 //        let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
 //
@@ -101,6 +108,20 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
 //                print(result)
 //            }
 //        })
+        
+//        if self.user?.name != nil {
+//             print("Name in FindVC: " + )
+//        }else{
+//        hread 1: EXC_BREAKPOINT (code=1, subcode=0x1041434c8)
+//            print("Error: user is nil")
+//        }
+       
+//        self.email = (Auth.auth().currentUser?.email)!
+        if Auth.auth().currentUser != nil {
+            print("FINDVC Auth.auth().currentUser.emsil: " + (Auth.auth().currentUser?.email)!)
+        }
+        //print("Name in FINDVC" + name)
+        
         
     }
     
@@ -166,6 +187,6 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
             return false
         }
     }
-    
+
 }
 
