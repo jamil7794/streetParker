@@ -15,4 +15,5 @@ target 'streetParker' do
    pod 'FBSDKLoginKit/Swift'
    pod 'FBSDKCoreKit/Swift'
    pod 'FBSDKShareKit/Swift'
+   pod 'GoogleSignIn'
 end

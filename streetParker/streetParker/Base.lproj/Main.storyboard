@@ -221,14 +221,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8W-JJ-QgL">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S8W-JJ-QgL" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
                                 <rect key="frame" x="25" y="797" width="200" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="mDv-ZW-YVR"/>
                                     <constraint firstAttribute="height" constant="40" id="xfk-sR-c2h"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <state key="normal" title="FBButt"/>
+                                <state key="normal" title="FBButt">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="signOutWasPressed:" destination="fg5-3N-5ph" eventType="touchUpInside" id="Ds2-KN-nxf"/>
                                 </connections>
@@ -387,16 +389,10 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <gestureRecognizers/>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rg5-6h-5P3" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBR-4m-mae">
                                                 <rect key="frame" x="0.0" y="96.5" width="320" height="77"/>
-                                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="21"/>
-                                                <state key="normal" title="Signup With Instagram">
-                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="signInWithInstagram:" destination="bMN-Od-qhd" eventType="touchUpInside" id="9XE-4C-APn"/>
-                                                </connections>
-                                            </button>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rIt-s4-bNc" customClass="customizedButton" customModule="streetParker" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="193.5" width="320" height="76.5"/>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -436,6 +432,7 @@
                     </view>
                     <connections>
                         <outlet property="FBView" destination="yz8-qa-erL" id="jca-bX-FCo"/>
+                        <outlet property="googleView" destination="gBR-4m-mae" id="6lV-Pq-bWU"/>
                         <outlet property="viewss" destination="bVM-ez-2q4" id="fR9-t2-wB5"/>
                     </connections>
                 </viewController>

@@ -10,11 +10,14 @@ import UIKit
 import Firebase
 import FBSDKLoginKit
 import SafariServices
+import GoogleSignIn
 
 
 
 class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDelegate {
+    
 
+    @IBOutlet weak var googleView: UIView!
     
     @IBOutlet weak var FBView: UIView!
     
@@ -27,6 +30,13 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+
+        // Automatically sign in the user.
+        //GIDSignIn.sharedInstance()?.restorePreviousSignIn()
+        
+        
         self.viewss.layer.cornerRadius = 15.0
         self.FBView.layer.cornerRadius = 15.0
         
@@ -36,6 +46,11 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         //FBButton.center = FBView.center
         FBButton.frame = CGRect(x: 0, y: 0, width: FBView.frame.width, height: FBView.frame.height)
         FBView.addSubview(FBButton)
+        
+        
+        let googleSignInButton = GIDSignInButton(frame: CGRect(x: 0, y: 0, width: googleView.frame.width, height: googleView.frame.height))
+        googleView.addSubview(googleSignInButton)
+        
         
         if let token = AccessToken.current,
             !token.isExpired {
@@ -119,7 +134,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                 self.id = FBResult["id"] as! String
                 
                 
-                let randString = "FBUser"
+                let randString = "FBUser" // .gitignore
                 
                 Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
                     for em in emails {
@@ -189,6 +204,8 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         print("FB Logged Out")
     }
     
+    
+
     
 }
 

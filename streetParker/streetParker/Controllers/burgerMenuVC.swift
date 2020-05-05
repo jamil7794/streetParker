@@ -56,7 +56,7 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
         signOutBTN.isHidden = true
     
         if let token = AccessToken.current,!token.isExpired {
-            
+            //App Crashes in burgerMenuVC because it can't connect to firebase
             Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (namee) in
                 print("Dataservice.instance.getNameForEmail in BurgerMenuVC:" + namee)
                 self.nameLbl.setTitle(namee, for: .normal)

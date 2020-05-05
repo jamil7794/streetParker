@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */; };
+		A6334C372460AB06001D16A2 /* streetParkerMod.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6334C352460AB05001D16A2 /* streetParkerMod.xcdatamodeld */; };
 		A63DC95B23826DF600747BDB /* burgerMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63DC95A23826DF600747BDB /* burgerMenuVC.swift */; };
 		A63DC96323826E6100747BDB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63DC96223826E6100747BDB /* SWRevealViewController.m */; };
 		A6506EA1245F3904005B2AB9 /* isAbleToPassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */; };
@@ -33,6 +34,7 @@
 		5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9CB933E0A194483707A210 /* Pods-streetParker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.debug.xcconfig"; sourceTree = "<group>"; };
 		898630E53F473148EA3BA36A /* Pods-streetParker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.release.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.release.xcconfig"; sourceTree = "<group>"; };
+		A6334C362460AB06001D16A2 /* streetParkerMod.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = streetParkerMod.xcdatamodel; sourceTree = "<group>"; };
 		A63DC95A23826DF600747BDB /* burgerMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = burgerMenuVC.swift; sourceTree = "<group>"; };
 		A63DC96023826E6000747BDB /* streetParker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "streetParker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A63DC96123826E6100747BDB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
@@ -123,6 +125,7 @@
 				A6BB7806237C5D980092A463 /* LaunchScreen.storyboard */,
 				A6BB7809237C5D980092A463 /* Info.plist */,
 				A6BB7812237D2C6B0092A463 /* GoogleService-Info.plist */,
+				A6334C352460AB05001D16A2 /* streetParkerMod.xcdatamodeld */,
 			);
 			path = streetParker;
 			sourceTree = "<group>";
@@ -187,7 +190,8 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				D119AC7FADC6513D2EBA4F08 /* [CP] Embed Pods Frameworks */,
+				C6353BDF2E3AB01F616F4698 /* [CP] Embed Pods Frameworks */,
+				E5B64B9C861079DE6BCB2380 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,7 +251,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		D119AC7FADC6513D2EBA4F08 /* [CP] Embed Pods Frameworks */ = {
+		C6353BDF2E3AB01F616F4698 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -282,6 +286,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E5B64B9C861079DE6BCB2380 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -289,6 +310,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6334C372460AB06001D16A2 /* streetParkerMod.xcdatamodeld in Sources */,
 				A6BB7800237C5D910092A463 /* AuthVC.swift in Sources */,
 				A6D20DAF237F26B4002D5580 /* FindVC.swift in Sources */,
 				A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */,
@@ -512,6 +534,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A6334C352460AB05001D16A2 /* streetParkerMod.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A6334C362460AB06001D16A2 /* streetParkerMod.xcdatamodel */,
+			);
+			currentVersion = A6334C362460AB06001D16A2 /* streetParkerMod.xcdatamodel */;
+			path = streetParkerMod.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6BB77F2237C5D910092A463 /* Project object */;
 }
