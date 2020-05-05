@@ -62,9 +62,16 @@ class Dataservice{
             for user in userSnapshot {
                 let email = user.childSnapshot(forPath: "email").value as! String
                 if em == email {
-                    let FIreName = user.childSnapshot(forPath: "Name").value as! String
-                    name = FIreName
-                    handler(name)
+                    if(user.hasChild("Name")){
+                        let FIreName = user.childSnapshot(forPath: "Name").value as! String
+                        name = FIreName
+                        handler(name)
+                    }else{
+                        name = "\((Auth.auth().currentUser?.email)!)"
+                        handler(name)
+                    }
+                    
+                    
                 }
             }
             

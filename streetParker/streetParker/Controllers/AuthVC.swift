@@ -14,7 +14,9 @@ import GoogleSignIn
 
 
 
-class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDelegate {
+class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDelegate, GIDSignInDelegate {
+    
+    
     
 
     @IBOutlet weak var googleView: UIView!
@@ -32,7 +34,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         super.viewDidLoad()
         
         GIDSignIn.sharedInstance()?.presentingViewController = self
-
+        GIDSignIn.sharedInstance()?.delegate = self
         // Automatically sign in the user.
         //GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         
@@ -162,13 +164,22 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                                 
                                 if success {
                                     print("Facebook User Created: " + self.email)
-//                                    if let presenter = self.presentingViewController as? FindVC {
-//                                        presenter.name = self.name
-//                                    }
                                     
                                     
-                                    print("self.name in AuthVC: " + self.name)
-                                    self.dismiss(animated: true, completion: nil)
+                                    
+                                    Authservice.instance.loginFBUser(withEmail: self.email, andPassword: randString) { (success, error) in
+                                            if success {
+                                                print("AuthVC: Facebook User Logged in as " + self.name)
+                               
+                                                
+                                                
+                                                
+                                                                  
+                                                self.dismiss(animated: true, completion: nil)
+                                            }else{
+                                                print("Facebook User Logging ERROR: " + error!.localizedDescription)
+                                                                    }
+                                                                }
                                 }else{
                                     print("Facebook User Creation ERROR: " + error!.localizedDescription)
                                 }
@@ -176,22 +187,6 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                         }
                     }
                 }
-                
-//                Authservice.instance.loginUser(withEmail: self.email!, andPassword: randString) { (success, error) in
-//                    if success {
-//                        print("Logged in FIrebase")
-//                    }else{
-//                        print("Firebase Error: " + error!.localizedDescription as! String)
-//                        Authservice.instance.registerFBUser(withEmail: self.email!, ) { (success, error) in
-//                            if success {
-//                                print("Facebook user created")
-//                            }else{
-//                                print("Facebook user not created: " + error!.localizedDescription as! String)
-//                            }
-//                        }
-//                    }
-//                }
-                
             }
         })
         
@@ -203,6 +198,90 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("FB Logged Out")
     }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        var compatble = false
+        var googlePass = "googleUser" // .gitignore
+        if let error = error {
+          if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+            print("The user has not signed in before or they have since signed out.")
+          } else {
+            print("\(error.localizedDescription)")
+          }
+          return
+        }
+        // Perform any operations on signed in user here.
+        let userId = user.userID                  // For client-side use only!
+        let idToken = user.authentication.idToken // Safe to send to the server
+        let fullNamee = user.profile.name
+        let givenName = user.profile.givenName
+        let familyName = user.profile.familyName
+        let emaill = user.profile.email
+        self.name = fullNamee!
+        self.email = emaill!
+        
+        
+        Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
+                            for em in emails {
+                                if em == self.email {
+                                    
+                                    Authservice.instance.loginFBUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+                                        if success {
+                                            print("AuthVC: Facebook User Logged in as " + self.name)
+        //                                    let presenter = self.presentingViewController as? FindVC
+        //                                    presenter?.name = self.name
+                                            
+                                            //print("presenter.name in AuthVC: " + (presenter?.name)!)
+                                            //self.delegate?.passData(data: self.name)
+                                            
+                                            compatble = true
+                                            self.dismiss(animated: true, completion: nil)
+                                        }else{
+                                            print("Facebook User Logging ERROR: " + error!.localizedDescription)
+                                        }
+                                    }
+                                    
+                                }else{
+                                    print(em + "   " + self.email + " not compatible")
+                                    
+                                }
+                            }
+            if (compatble == false){
+                print("Compatible: \(compatble)")
+                print("email: \(self.email)")
+                print("Name: \(self.name)")
+                print("googlePass: \(googlePass)")
+                
+                Authservice.instance.registerFBUser(withEmail: self.email, withName: self.name, andPassword: googlePass) { (success, error) in
+                    
+                    if success {
+                        print("Facebook User Created: " + self.email)
+                        
+                        
+                        
+                        Authservice.instance.loginFBUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+                            if success {
+                                print("AuthVC: Facebook User Logged in as " + self.name)
+                                
+                                
+                                
+                                
+                                
+                                self.dismiss(animated: true, completion: nil)
+                            }else{
+                                print("Facebook User Logging ERROR: " + error!.localizedDescription)
+                            }
+                        }
+                    }else{
+                        print("Facebook User Creation ERROR: " + error!.localizedDescription)
+                    }
+                }
+            }
+        }
+        
+    }
+    
     
     
 

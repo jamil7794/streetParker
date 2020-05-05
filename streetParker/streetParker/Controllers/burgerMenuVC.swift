@@ -9,13 +9,14 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import GoogleSignIn
 
 
 
-class burgerMenuVC: UIViewController, LoginButtonDelegate{
+class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
     
     
-    //, LoginButtonDelegate 
+
     
     @IBOutlet weak var nameLbl: UIButton!
     
@@ -32,6 +33,7 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        GIDSignIn.sharedInstance()?.delegate = self
     
         profileImage.layer.cornerRadius = profileImage.frame.width / 2
         //EXC_BREAKPOINT (code=1, subcode=0x102b452ac)
@@ -74,7 +76,10 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
             FBButton.removeFromSuperview()
             FBButton.isHidden = true
             signOutBTN.isHidden = false
-            self.nameLbl.setTitle((Auth.auth().currentUser?.email)!, for: .normal)
+            
+            Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (name) in
+                self.nameLbl.setTitle(name, for: .normal)
+            }
             signOutBTN.setTitle("Logout", for: .normal)
         }
         
@@ -134,6 +139,18 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate{
             // Fallback on earlier versions
         }
         
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        
+       
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+              withError error: Error!) {
+      // Perform any operations when the user disconnects from app here.
+      // ...
     }
     
 }
