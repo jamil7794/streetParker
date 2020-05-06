@@ -8,7 +8,10 @@
 
 import Foundation
 import Firebase
+import CoreData
+
 let DB_BASE = Database.database().reference()
+
 
 class Dataservice{
     static let instance = Dataservice()
@@ -75,6 +78,46 @@ class Dataservice{
                 }
             }
             
+        }
+    }
+    
+    func fetchUserInfo(handler: @escaping (_ name: String) -> ()){
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAndCar")
+        // fetch through this entity
+        // Thread 1: Exception: "NSFetchRequest could not locate an NSEntityDescription for entity name 'userEmail'"
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "userEmail") as! String)
+                let email = data.value(forKey: "userEmail") as! String
+                handler(email)
+            }
+            
+        }catch{
+            let email = "Coudn't return anything "
+            debugPrint("Could not fetch: \(error.localizedDescription)")
+            handler(email)
+        }
+        
+    }
+    
+    func deleteAllDataFromCoreData(completion: (_ complete: Bool) ->()){
+        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "UserAndCar")
+        // fetch through this entity
+        // Thread 1: Exception: "NSFetchRequest could not locate an NSEntityDescription for entity name 'userEmail'"
+        do{
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                //print(data.value(forKey: "userEmail") as! String)
+                //let managedObjectData = data
+                managedContext.delete(data)
+            }
+            completion(true)
+        }catch{
+            debugPrint("Could not fetch: \(error.localizedDescription)")
+            completion(false)
         }
     }
 }

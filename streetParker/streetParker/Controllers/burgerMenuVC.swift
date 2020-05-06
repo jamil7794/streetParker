@@ -40,23 +40,46 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
         FBButton.delegate = self
         
         
+        
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        var loggedCheck = false
+        var coreDataEmail = ""
+        let randString = "FBUser" //.gitignore
+        Dataservice.instance.fetchUserInfo { (em) in
+            print("Fetched user email from core data: \(em)")
+            coreDataEmail = em
+        }
         
         if Auth.auth().currentUser != nil {
             print("Current User email in BurgerMenuVC: " + (Auth.auth().currentUser?.email)!)
         }else {
             print("Current User email in BurgerMenuVC: nil")
+            loggedCheck = true
         }
         
+  
+        Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+            if success {
+                print("Logged in with core data email")
+            }else{
+                print("Logged in with core data email: \(error?.localizedDescription)")
+            }
+        }
+        
+        
+      
+        
         signOutBTN.layer.cornerRadius = 10
-        
-        
         FBButton.frame = CGRect(x: 25, y: 600, width: 200, height: 40)
         FBButton.isHidden = true
         signOutBTN.isHidden = true
     
+        
+        //hread 1: EXC_BREAKPOINT (code=1, subcode=0x102c35848)
         if let token = AccessToken.current,!token.isExpired {
             //App Crashes in burgerMenuVC because it can't connect to firebase
             Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (namee) in
@@ -143,9 +166,7 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         
-        
-       
-    }
+        }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {

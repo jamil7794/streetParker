@@ -28,7 +28,7 @@ class insetTxtField: UITextField {
     
     // palceHolder
     override func awakeFromNib() {
-        let placeHolder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)])
+        let placeHolder = NSAttributedString(string: self.placeholder!, attributes: [NSAttributedString.Key.foregroundColor: #colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1)])
         
         self.attributedPlaceholder = placeHolder
         super.awakeFromNib()
