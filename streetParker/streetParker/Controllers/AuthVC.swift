@@ -127,6 +127,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         print("Login Complete")
         let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
 
+        var fbCompatible = false
         r.start(completionHandler: { (test, result, error) in
             if(error == nil)
             {
@@ -151,7 +152,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                                     //print("presenter.name in AuthVC: " + (presenter?.name)!)
                                     //self.delegate?.passData(data: self.name)
                                     
-                              
+                                    fbCompatible = true
                                     self.dismiss(animated: true, completion: nil)
                                 }else{
                                     print("Facebook User Logging ERROR: " + error!.localizedDescription)
@@ -160,29 +161,35 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                             
                         }else{
                             print(em + "   " + self.email + " not compatible")
-                            Authservice.instance.registerFBUser(withEmail: self.email, withName: self.name, andPassword: randString) { (success, error) in
+                        }
+                        
+                        //
+                    }
+                    
+                    //for em in email
+                    if fbCompatible == false {
+                        Authservice.instance.registerFBUser(withEmail: self.email, withName: self.name, andPassword: randString) { (success, error) in
+                            
+                            if success {
+                                print("Facebook User Created: " + self.email)
                                 
-                                if success {
-                                    print("Facebook User Created: " + self.email)
-                                    
-                                    
-                                    
-                                    Authservice.instance.loginFBUser(withEmail: self.email, andPassword: randString) { (success, error) in
-                                            if success {
-                                                print("AuthVC: Facebook User Logged in as " + self.name)
-                               
-                                                
-                                                
-                                                
-                                                                  
-                                                self.dismiss(animated: true, completion: nil)
-                                            }else{
-                                                print("Facebook User Logging ERROR: " + error!.localizedDescription)
-                                                                    }
+                                
+                                
+                                Authservice.instance.loginFBUser(withEmail: self.email, andPassword: randString) { (success, error) in
+                                        if success {
+                                            print("AuthVC: Facebook User Logged in as " + self.name)
+                           
+                                            
+                                            
+                                            
+                                                              
+                                            self.dismiss(animated: true, completion: nil)
+                                        }else{
+                                            print("Facebook User Logging ERROR: " + error!.localizedDescription)
                                                                 }
-                                }else{
-                                    print("Facebook User Creation ERROR: " + error!.localizedDescription)
-                                }
+                                                            }
+                            }else{
+                                print("Facebook User Creation ERROR: " + error!.localizedDescription)
                             }
                         }
                     }
