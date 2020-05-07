@@ -98,6 +98,25 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if let token = AccessToken.current,
+            !token.isExpired {
+            
+            var coreDataEmail = ""
+            let randString = "FBUser" //.gitignore
+            Dataservice.instance.fetchUserInfo { (em) in
+                print("Fetched user email from core data: \(em)")
+                coreDataEmail = em
+            }
+            Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+                if success {
+                    print("Logged in with core data email")
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    print("Logged in with core data email error: \(error?.localizedDescription)")
+                }
+            }
+        }
+        print(Auth.auth().currentUser)
         //addButton()
         
 //        let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
@@ -117,9 +136,26 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
 //        }
        
 //        self.email = (Auth.auth().currentUser?.email)!
-        if Auth.auth().currentUser != nil {
-            print("FINDVC Auth.auth().currentUser.emsil: " + (Auth.auth().currentUser?.email)!)
-        }
+        
+//        var coreDataEmail = ""
+//        var randString = ""
+//        Dataservice.instance.fetchUserInfo { (em) in
+//            print("Fetched user email from core data: \(em)")
+//            coreDataEmail = em
+//        }
+//        Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+//            if success {
+//                print("Logged in with core data email")
+//            }else{
+//                print("Logged in with core data email: \(error?.localizedDescription)")
+//            }
+//        }
+        
+//        if Auth.auth().currentUser != nil {
+//            print("FINDVC Auth.auth().currentUser.emsil: " + (Auth.auth().currentUser?.email)!)
+//        }else{
+//            print("FINDVC Auth.auth().currentUser.emsil: nil" + (Auth.auth().currentUser?.email)!)
+//        }
         //print("Name in FINDVC" + name)
         
         

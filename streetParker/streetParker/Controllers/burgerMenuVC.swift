@@ -46,29 +46,29 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        var loggedCheck = false
-        var coreDataEmail = ""
-        let randString = "FBUser" //.gitignore
-        Dataservice.instance.fetchUserInfo { (em) in
-            print("Fetched user email from core data: \(em)")
-            coreDataEmail = em
-        }
+//        var loggedCheck = false
+//        var coreDataEmail = ""
+//        let randString = "FBUser" //.gitignore
+//        Dataservice.instance.fetchUserInfo { (em) in
+//            print("Fetched user email from core data: \(em)")
+//            coreDataEmail = em
+//        }
         
         if Auth.auth().currentUser != nil {
             print("Current User email in BurgerMenuVC: " + (Auth.auth().currentUser?.email)!)
         }else {
             print("Current User email in BurgerMenuVC: nil")
-            loggedCheck = true
+           // loggedCheck = true
         }
-        
+         
   
-        Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
-            if success {
-                print("Logged in with core data email")
-            }else{
-                print("Logged in with core data email: \(error?.localizedDescription)")
-            }
-        }
+//        Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+//            if success {
+//                print("Logged in with core data email")
+//            }else{
+//                print("Logged in with core data email error: \(error?.localizedDescription)")
+//            }
+//        }
         
         
       
@@ -82,10 +82,28 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
         //hread 1: EXC_BREAKPOINT (code=1, subcode=0x102c35848)
         if let token = AccessToken.current,!token.isExpired {
             //App Crashes in burgerMenuVC because it can't connect to firebase
-            Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (namee) in
-                print("Dataservice.instance.getNameForEmail in BurgerMenuVC:" + namee)
-                self.nameLbl.setTitle(namee, for: .normal)
+
+            
+            var coreDataEmail = ""
+            let randString = "FBUser" //.gitignore
+            Dataservice.instance.fetchUserInfo { (em) in
+                print("Fetched user email from core data: \(em)")
+                coreDataEmail = em
             }
+            Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+                if success {
+                    print("Logged in with core data email")
+                    self.dismiss(animated: true, completion: nil)
+                }else{
+                    print("Logged in with core data email error: \(error?.localizedDescription)")
+                }
+            }
+            
+            Dataservice.instance.getNameForEmail(forEmail: (Auth.auth().currentUser?.email)!) { (namee) in
+                  print("Dataservice.instance.getNameForEmail in BurgerMenuVC:" + namee)
+                  self.nameLbl.setTitle(namee, for: .normal)
+            }
+            
             
             FBButton.isHidden = false
             signOutBTN.isHidden = true
@@ -153,6 +171,13 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("FB User logged out")
         Authservice.instance.signOut()
+        Dataservice.instance.deleteAllDataFromCoreData { (success) in
+            if success {
+                print("personal data deleted")
+            }else{
+                print("personal data not deleted")
+            }
+        }
         
         if #available(iOS 13.0, *) {
             let authVC = storyboard?.instantiateViewController(identifier: "AuthVC") as? AuthVC
@@ -172,6 +197,26 @@ class burgerMenuVC: UIViewController, LoginButtonDelegate, GIDSignInDelegate{
               withError error: Error!) {
       // Perform any operations when the user disconnects from app here.
       // ...
+        
+        print("Google User logged out")
+        Authservice.instance.signOut()
+        Dataservice.instance.deleteAllDataFromCoreData { (success) in
+            if success {
+                print("personal data deleted")
+            }else{
+                print("personal data not deleted")
+            }
+        }
+        
+        if #available(iOS 13.0, *) {
+            let authVC = storyboard?.instantiateViewController(identifier: "AuthVC") as? AuthVC
+            authVC?.modalPresentationStyle = .fullScreen
+            self.present(authVC!, animated: true, completion: nil)
+        } else {
+            // Fallback on earlier versions
+        }
+        
+        
     }
     
 }

@@ -81,11 +81,24 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         
         if let token = AccessToken.current,!token.isExpired {
             if Auth.auth().currentUser != nil {
-                print("Facbook user is already logged in")
+                print("Facbook user is already logged in but not auth")
             }else{
                 print("Facbook user is not logged in")
+                var coreDataEmail = ""
+                let randString = "FBUser" //.gitignore
+                Dataservice.instance.fetchUserInfo { (em) in
+                    print("Fetched user email from core data: \(em)")
+                    coreDataEmail = em
+                }
+                Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+                    if success {
+                        print("Logged in with core data email")
+                        self.dismiss(animated: true, completion: nil)
+                    }else{
+                        print("Logged in with core data email error: \(error?.localizedDescription)")
+                    }
+                }
             }
-            self.dismiss(animated: true, completion: nil)
         }
         
     }
