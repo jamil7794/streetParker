@@ -24,7 +24,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     var periph: CBPeripheral!
     var name: String?
     var email: String?
-    var user: userContents?
+//    var user: userContents?
     
     
     @IBOutlet weak var button: UIButton!
@@ -75,14 +75,14 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         self.view2.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         self.view2.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
-//        mapView = NavigationMapView(frame: view2.bounds)
-//        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//        view2.addSubview(mapView)
-//        mapView.delegate = self
-//        mapView.showsUserLocation = true
-//        mapView.setUserTrackingMode(.follow, animated: true)
-//        //mapView.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
-//        mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
+        mapView = NavigationMapView(frame: view2.bounds)
+        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view2.addSubview(mapView)
+        mapView.delegate = self
+        mapView.showsUserLocation = true
+        mapView.setUserTrackingMode(.follow, animated: true)
+        //mapView.addGestureRecognizer((self.revealViewController()?.panGestureRecognizer())!)
+        mapView.addGestureRecognizer(self.revealViewController().tapGestureRecognizer())
         
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
@@ -110,7 +110,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
             Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
                 if success {
                     print("Logged in with core data email")
-                    self.dismiss(animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
                 }else{
                     print("Logged in with core data email error: \(error?.localizedDescription)")
                 }

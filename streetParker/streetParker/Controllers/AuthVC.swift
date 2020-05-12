@@ -18,6 +18,7 @@ let appDelegate = UIApplication.shared.delegate as? AppDelegate
 class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDelegate, GIDSignInDelegate {
     
     
+    @IBOutlet weak var activityIndication: UIActivityIndicatorView!
     
 
     @IBOutlet weak var googleView: UIView!
@@ -28,12 +29,13 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     var email =  String()
     var id: String?
     var name = String()
-    var data: userContents?
-    var flag = 0
+    //var flag = 0
+    var emailLogged = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        activityIndication.startAnimating()
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.delegate = self
         // Automatically sign in the user.
@@ -55,14 +57,16 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         googleView.addSubview(googleSignInButton)
         
         
-        if let token = AccessToken.current,
-            !token.isExpired {
-            self.dismiss(animated: true, completion: nil)
-        }
-    
-       if Auth.auth().currentUser != nil {
-            self.dismiss(animated: true, completion: nil)
-        }
+//        if let token = AccessToken.current,
+//            !token.isExpired {
+//            self.dismiss(animated: true, completion: nil)
+//        }
+//
+//       if Auth.auth().currentUser != nil {
+//            self.dismiss(animated: true, completion: nil)
+//        }
+        
+        activityIndication.stopAnimating()
         
     }
     
@@ -70,48 +74,56 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+
+        
+//        if let token = AccessToken.current,!token.isExpired {
+//            if Auth.auth().currentUser != nil {
+//                print("Facbook user is already logged and in auth")
+//            }else{
+//                print("Facbook user is not logged in")
+//                var coreDataEmail = ""
+//                let randString = "FBUser" //.gitignore
+////                Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+////                    if complete {
+////
+////                    }else{
+////
+////                    }
+////                }
+//                Dataservice.instance.fetchUserInfo { (em) in
+//                    print("Fetched user email from core data: \(em)")
+//                    coreDataEmail = em
+//                }
+//                Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
+//                    if success {
+//                        print("Logged in with core data email")
+//
+//                        //self.dismiss(animated: true, completion: nil)
+//                    }else{
+//                        print("Logged in with core data email error: \(error?.localizedDescription)")
+//                    }
+//                }
+//            }
+//        }
+
         
         if Auth.auth().currentUser != nil {
-            self.dismiss(animated: true, completion: nil)
-        }
-        
-//        if let presenter = presentingViewController as? FindVC {
-//            presenter.name = self.name
-//        }
-        
-        if let token = AccessToken.current,!token.isExpired {
-            if Auth.auth().currentUser != nil {
-                print("Facbook user is already logged in but not auth")
-            }else{
-                print("Facbook user is not logged in")
-                var coreDataEmail = ""
-                let randString = "FBUser" //.gitignore
-                Dataservice.instance.fetchUserInfo { (em) in
-                    print("Fetched user email from core data: \(em)")
-                    coreDataEmail = em
-                }
-                Authservice.instance.loginSocialUser(withEmail: coreDataEmail, andPassword: randString) { (success, error) in
-                    if success {
-                        print("Logged in with core data email")
-                        self.dismiss(animated: true, completion: nil)
-                    }else{
-                        print("Logged in with core data email error: \(error?.localizedDescription)")
-                    }
-                }
+            if emailLogged == 1{
+                self.dismiss(animated: true, completion: nil)
             }
         }
-        
+        //activityIndication.stopAnimating()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
-
-    }
 
     @IBAction func signInWithInstagram(_ sender: Any) {
         
     }
     
     @IBAction func signInWithEmail(_ sender: Any) {
+        activityIndication.startAnimating()
+        emailLogged = 1
+        
         if #available(iOS 13.0, *) {
             let signinVC = storyboard?.instantiateViewController(withIdentifier: "SigninVC")
             signinVC?.modalPresentationStyle = .fullScreen
@@ -119,7 +131,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         } else {
             // Fallback on earlier versions
         }
-        
+        activityIndication.stopAnimating()
         
     }
     
@@ -130,15 +142,13 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         }
     }
     
-    @objc func FBAction(){
-        //NotificationCenter.default.post(name: Notification.Name("FBPressed"), object: nil)
-        //self.dismiss(animated: true, completion: nil)
-    }
-    
     
     func loginButton(_ loginButton: FBLoginButton, didCompleteWith result:
         LoginManagerLoginResult?, error: Error?) {
-        print("Login Complete")
+        emailLogged = 0
+        activityIndication.startAnimating()
+
+        
         let r = GraphRequest(graphPath: "/me", parameters: ["fields":"id, email, name"], tokenString: AccessToken.current?.tokenString, version: nil, httpMethod: HTTPMethod(rawValue: "GET"))
 
         var fbCompatible = false
@@ -148,76 +158,49 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                 let FBResult = result as! NSDictionary
                 self.email = FBResult["email"] as! String
                 self.name = FBResult["name"] as! String
-                self.id = FBResult["id"] as! String
+                //self.id = FBResult["id"] as! String
                 
-                
+                print("self.email after logging in Facebook in AuthVC \(self.email) and FBResult['name'] as! String \(FBResult["email"] as! String)")
                 let randString = "FBUser" // .gitignore
-                
-                Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
-                    for em in emails {
-                        if em == self.email {
+                Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: randString) { (success, error) in
+                    if success {
+                        print("Login Completed")
+                        Dataservice.instance.save(forEmail: self.email) { (complete) in
+                            if complete {
+                                
+                            }else {
                             
-                            Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: randString) { (success, error) in
-                                if success {
-                                    print("AuthVC: Facebook User Logged in as " + self.name)
-                                    
-                                    Dataservice.instance.deleteAllDataFromCoreData { (complete) in
-                                        if complete {
-                                            print("Core Data Objects deleted")
-                                        }else {
-                                            print("Couldn't delete Core Data Objects")
-                                        }
-                                    }
-                                    
-                                    
-                                    fbCompatible = true
-                                    self.save { (complete) in
-                                        if complete {
-                                            self.dismiss(animated: true, completion: nil)
-                                        }
-                                    }
-                                    
-                                }else{
-                                    print("Facebook User Logging ERROR: " + error!.localizedDescription)
-                                }
                             }
-                            
-                        }else{
-                            print(em + "   " + self.email + " not compatible")
                         }
-                        
-                        //
+                        self.dismiss(animated: true, completion: nil)
+                    }else{
+                        print("Login Error: \(error?.localizedDescription)")
                     }
                     
-                    //for em in email
-                    if fbCompatible == false {
-                        Authservice.instance.registerSocialUser(withEmail: self.email, withName: self.name, andPassword: randString) { (success, error) in
-                            
-                            if success {
-                                print("Facebook User Created: " + self.email)
+                    Authservice.instance.registerSocialUser(withEmail: self.email,withName: self.name, andPassword: randString) { (success, error) in
+                        if success {
+                            Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: randString) { (success, error) in
+                                print("Successfully Registered User \(self.email)")
+                                Dataservice.instance.deleteAllDataFromCoreData { (done) in
+                                    print(done)
+                                }
+                                Dataservice.instance.save(forEmail: self.email) { (complete) in
+                                    print(complete)
+                                }
+                                let UploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC")
+                                UploadVC?.modalPresentationStyle = .fullScreen
+                                self.present(UploadVC!, animated: true, completion: nil)
                                 
                                 
-                                
-                                Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: randString) { (success, error) in
-                                        if success {
-                                            print("AuthVC: Facebook User Logged in as " + self.name)
-                           
-                                            
-                                            
-                                            
-                                                              
-                                            self.dismiss(animated: true, completion: nil)
-                                        }else{
-                                            print("Facebook User Logging ERROR: " + error!.localizedDescription)
-                                                                }
-                                                            }
-                            }else{
-                                print("Facebook User Creation ERROR: " + error!.localizedDescription)
+                                //self.dismiss(animated: true, completion: nil)
                             }
+                        }else{
+                            print("Registration error \(error?.localizedDescription)")
                         }
                     }
                 }
-            }
+                
+            }// printing all emauil
         })
         
         
@@ -227,9 +210,21 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
     
     func loginButtonDidLogOut(_ loginButton: FBLoginButton) {
         print("FB Logged Out")
+        Authservice.instance.signOut()
+        Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+            if complete {
+                print("Core Data Objects deleted")
+            }else {
+                print("Couldn't delete Core Data Objects")
+            }
+        }
+        
     }
     
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        
+        activityIndication.startAnimating()
+        emailLogged = 0
         
         var compatble = false
         var googlePass = "googleUser" // .gitignore
@@ -252,96 +247,152 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         self.email = emaill!
         
         
-        Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
-                            for em in emails {
-                                if em == self.email {
-                                    
-                                    Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
-                                        if success {
-                                            print("AuthVC: Google User Logged in as " + self.name)
-        
-                                            compatble = true
-                                            
-                                            Dataservice.instance.deleteAllDataFromCoreData { (complete) in
-                                                if complete {
-                                                    print("Core Data Objects deleted")
-                                                }else {
-                                                    print("Couldn't delete Core Data Objects")
-                                                }
-                                            }
-                                            
-                                            
-                                            self.save { (complete) in
-                                                if complete {
-                                                    self.dismiss(animated: true, completion: nil)
-                                                }
-                                            }
-                                            
-                                            
-                                        }else{
-                                            print("Google User Logging ERROR: " + error!.localizedDescription)
-                                        }
-                                    }
-                                    
-                                }else{
-                                    print(em + "   " + self.email + " not compatible")
-                                    
-                                }
-                            }
-            if (compatble == false){
-                print("Compatible: \(compatble)")
-                print("email: \(self.email)")
-                print("Name: \(self.name)")
-                print("googlePass: \(googlePass)")
-                
-                Authservice.instance.registerSocialUser(withEmail: self.email, withName: self.name, andPassword: googlePass) { (success, error) in
+        Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+            if success {
+                print("Login Completed")
+                Dataservice.instance.save(forEmail: self.email) { (complete) in
+                    if complete {
+                        
+                    }else {
                     
-                    if success {
-                        print("Google User Created: " + self.email)
-                        
-                        
-                        
-                        Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
-                            if success {
-                                print("AuthVC: Google User Logged in as " + self.name)
-                                
-                                
-                                
-                                
-                                
-                                self.dismiss(animated: true, completion: nil)
-                            }else{
-                                print("Google User Logging ERROR: " + error!.localizedDescription)
-                            }
-                        }
-                    }else{
-                        print("Google User Creation ERROR: " + error!.localizedDescription)
                     }
+                }
+                self.dismiss(animated: true, completion: nil)
+            }else{
+                print("Login Error: \(error?.localizedDescription)")
+            }
+            
+            Authservice.instance.registerSocialUser(withEmail: self.email,withName: self.name, andPassword: googlePass) { (success, error) in
+                if success {
+                    Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+                        print("Successfully Registered User")
+                        Dataservice.instance.deleteAllDataFromCoreData { (done) in
+                            print(done)
+                        }
+                        Dataservice.instance.save(forEmail: self.email) { (complete) in
+                            print(complete)
+                        }
+                        let UploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC")
+                        UploadVC?.modalPresentationStyle = .fullScreen
+                        self.present(UploadVC!, animated: true, completion: nil)
+                        
+                        
+                        //self.dismiss(animated: true, completion: nil)
+                    }
+                }else{
+                    print("Registration error \(error?.localizedDescription)")
                 }
             }
         }
         
-    }
-    
-    func save(completion: (_ finished: Bool) -> ()){
-        guard let managedContext = appDelegate?.persistentContainer.viewContext else {return}
         
-        let user = UserAndCar(context: managedContext)
-        user.userEmail = self.email
-        user.userName = self.name
+//        Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
+//                            for em in emails {
+//                                if em == self.email {
+//
+//                                    Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+//                                        if success {
+//                                            print("AuthVC: Google User Logged in as " + self.name)
+//
+////                                            Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+////                                                if complete {
+////                                                    print("Core Data Objects deleted")
+////                                                }else {
+////                                                    print("Couldn't delete Core Data Objects")
+////                                                }
+////                                            }
+//
+//
+//                                            compatble = true
+////                                            self.save { (complete) in
+////                                                if complete {
+////                                                    self.dismiss(animated: true, completion: nil)
+////                                                }
+////                                            }
+//                                            self.activityIndication.stopAnimating()
+//
+//                                        }else{
+//                                            print("Google User Logging ERROR: " + error!.localizedDescription)
+//                                        }
+//                                    }
+//
+//                                }else{
+//                                    print(em + "   " + self.email + " not compatible")
+//
+//                                }
+//                            }
+//            if (compatble == false){
+//                print("Compatible: \(compatble)")
+//                print("email: \(self.email)")
+//                print("Name: \(self.name)")
+//                print("googlePass: \(googlePass)")
+//
+//                Authservice.instance.registerSocialUser(withEmail: self.email, withName: self.name, andPassword: googlePass) { (success, error) in
+//
+//                    if success {
+//                        print("Google User Created: " + self.email)
+//
+//
+//
+//                        Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
+//                            if success {
+//                                print("AuthVC: Google User Logged in as " + self.name)
+//
+//                                Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+//                                        if complete {
+//                                            print("Core Data Objects deleted")
+//                                        }else {
+//                                            print("Couldn't delete Core Data Objects")
+//                                        }
+//                                }
+//
+//
+//                                compatble = true
+//                                Dataservice.instance.save(forEmail: (Auth.auth().currentUser?.email)!) { (complete) in
+//                                    if complete {
+//                                        let pvc = self.presentingViewController
+//                                        self.dismiss(animated: true) {
+//                                            if #available(iOS 13.0, *) {
+//                                                let UploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC")
+//                                                UploadVC?.modalPresentationStyle = .fullScreen
+//                                                pvc?.present(UploadVC!, animated: true, completion: nil)
+//                                            } else {
+//                                                // Fallback on earlier versions
+//                                            }
+//                                        }
+//
+//                                    }
+//                                }
+//
+//
+//                            }else{
+//                                print("Google User Logging ERROR: " + error!.localizedDescription)
+//                            }
+//                        }
+//                    }else{
+//                        print("Google User Creation ERROR: " + error!.localizedDescription)
+//                    }
+//                }
+//            }
+//        }
         
-        do{
-           try managedContext.save()
-            print("User Info successfully saved")
-            completion(true)
-        } catch {
-            print("Could not save data: \(error.localizedDescription)")
-            completion(false)
-        }
+         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+                      withError error: Error!) {
+//               Perform any operations when the user disconnects from app here.
+//               ...
+                Authservice.instance.signOut()
+                Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+                    if complete {
+                        print("Core Data Objects deleted")
+                    }else {
+                        print("Couldn't delete Core Data Objects")
+                    }
+                }
+            }
+        
         
     }
 
-    
 }
 
 extension SFSafariViewController {
@@ -350,6 +401,5 @@ extension SFSafariViewController {
         set {super.modalPresentationStyle = newValue}
     }
 }
-
 
 

@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */; };
+		747299122B8097B5F3D41455 /* Pods_streetParker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E9ECE7D2D7E7D9EACFCE63 /* Pods_streetParker.framework */; };
 		A6334C372460AB06001D16A2 /* streetParkerMod.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A6334C352460AB05001D16A2 /* streetParkerMod.xcdatamodeld */; };
 		A63DC95B23826DF600747BDB /* burgerMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A63DC95A23826DF600747BDB /* burgerMenuVC.swift */; };
 		A63DC96323826E6100747BDB /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A63DC96223826E6100747BDB /* SWRevealViewController.m */; };
-		A6506EA1245F3904005B2AB9 /* isAbleToPassData.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */; };
-		A6506EA3245F3C1D005B2AB9 /* userContents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6506EA2245F3C1D005B2AB9 /* userContents.swift */; };
 		A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FD237C5D910092A463 /* AppDelegate.swift */; };
 		A6BB7800237C5D910092A463 /* AuthVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6BB77FF237C5D910092A463 /* AuthVC.swift */; };
 		A6BB7803237C5D910092A463 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6BB7801237C5D910092A463 /* Main.storyboard */; };
@@ -27,21 +25,21 @@
 		A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */; };
 		A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DAC237EE731002D5580 /* Authservice.swift */; };
 		A6D20DAF237F26B4002D5580 /* FindVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6D20DAE237F26B4002D5580 /* FindVC.swift */; };
+		A6F2C78E24647D0000BB053D /* uploadColorAndModelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6F2C78D24647D0000BB053D /* uploadColorAndModelVC.swift */; };
 		A6FD3B362383C7EC001F8676 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6FD3B352383C7EC001F8676 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D9CB933E0A194483707A210 /* Pods-streetParker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.debug.xcconfig"; sourceTree = "<group>"; };
 		898630E53F473148EA3BA36A /* Pods-streetParker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streetParker.release.xcconfig"; path = "Pods/Target Support Files/Pods-streetParker/Pods-streetParker.release.xcconfig"; sourceTree = "<group>"; };
+		93E9ECE7D2D7E7D9EACFCE63 /* Pods_streetParker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_streetParker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6334C362460AB06001D16A2 /* streetParkerMod.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = streetParkerMod.xcdatamodel; sourceTree = "<group>"; };
 		A63DC95A23826DF600747BDB /* burgerMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = burgerMenuVC.swift; sourceTree = "<group>"; };
 		A63DC96023826E6000747BDB /* streetParker-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "streetParker-Bridging-Header.h"; sourceTree = "<group>"; };
 		A63DC96123826E6100747BDB /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		A63DC96223826E6100747BDB /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
-		A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isAbleToPassData.swift; sourceTree = "<group>"; };
-		A6506EA2245F3C1D005B2AB9 /* userContents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userContents.swift; sourceTree = "<group>"; };
-		A685BABF245E7FB000B1E7C2 /* streetParker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = streetParker.entitlements; sourceTree = "<group>"; };
+		A678A38524646128002E03E9 /* Apple Worldwide Developer Relations Certification Authority.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Apple Worldwide Developer Relations Certification Authority.cer"; sourceTree = SOURCE_ROOT; };
+		A6821F9F2464578D0083DAB8 /* streetParker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = streetParker.entitlements; sourceTree = "<group>"; };
 		A6BB77FA237C5D910092A463 /* streetParker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = streetParker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6BB77FD237C5D910092A463 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6BB77FF237C5D910092A463 /* AuthVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthVC.swift; sourceTree = "<group>"; };
@@ -58,6 +56,7 @@
 		A6D20DA9237E8CAE002D5580 /* insetTxtField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = insetTxtField.swift; sourceTree = "<group>"; };
 		A6D20DAC237EE731002D5580 /* Authservice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authservice.swift; sourceTree = "<group>"; };
 		A6D20DAE237F26B4002D5580 /* FindVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindVC.swift; sourceTree = "<group>"; };
+		A6F2C78D24647D0000BB053D /* uploadColorAndModelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = uploadColorAndModelVC.swift; sourceTree = "<group>"; };
 		A6FD3B352383C7EC001F8676 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,7 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1719106AB04D23A71AF086F0 /* Pods_streetParker.framework in Frameworks */,
+				747299122B8097B5F3D41455 /* Pods_streetParker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,7 +112,8 @@
 		A6BB77FC237C5D910092A463 /* streetParker */ = {
 			isa = PBXGroup;
 			children = (
-				A685BABF245E7FB000B1E7C2 /* streetParker.entitlements */,
+				A6821F9F2464578D0083DAB8 /* streetParker.entitlements */,
+				A678A38524646128002E03E9 /* Apple Worldwide Developer Relations Certification Authority.cer */,
 				A6FD3B342383C7CB001F8676 /* Model */,
 				A63DC95C23826DFE00747BDB /* Supporting Files */,
 				A6D20DAB237EE715002D5580 /* Services */,
@@ -148,6 +148,7 @@
 				A6D20DA5237DA85F002D5580 /* SigninVC.swift */,
 				A6D20DAE237F26B4002D5580 /* FindVC.swift */,
 				A63DC95A23826DF600747BDB /* burgerMenuVC.swift */,
+				A6F2C78D24647D0000BB053D /* uploadColorAndModelVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -165,8 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				A6FD3B352383C7EC001F8676 /* Message.swift */,
-				A6506EA0245F3904005B2AB9 /* isAbleToPassData.swift */,
-				A6506EA2245F3C1D005B2AB9 /* userContents.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,7 +173,7 @@
 		ABDA183B2F3C95CB308850F0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				5C9F863D9391937CB29C0A17 /* Pods_streetParker.framework */,
+				93E9ECE7D2D7E7D9EACFCE63 /* Pods_streetParker.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -190,8 +189,8 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				9579F2DD7C60F4B9B584E793 /* [CP] Embed Pods Frameworks */,
-				BA92D82ABBE765809D78EDCD /* [CP] Copy Pods Resources */,
+				A3468A6748E9948802BCEE1D /* [CP] Embed Pods Frameworks */,
+				3AD2E8824A09DB5FEB263661 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -251,24 +250,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		9579F2DD7C60F4B9B584E793 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BA92D82ABBE765809D78EDCD /* [CP] Copy Pods Resources */ = {
+		3AD2E8824A09DB5FEB263661 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -283,6 +265,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3468A6748E9948802BCEE1D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E17F0EA0D215919A2B60D7BF /* [CP] Check Pods Manifest.lock */ = {
@@ -316,10 +315,9 @@
 				A6BB77FE237C5D910092A463 /* AppDelegate.swift in Sources */,
 				A6D20DA8237DAE58002D5580 /* UIViewExt.swift in Sources */,
 				A6BB7811237C8FD10092A463 /* customizedButton.swift in Sources */,
-				A6506EA1245F3904005B2AB9 /* isAbleToPassData.swift in Sources */,
+				A6F2C78E24647D0000BB053D /* uploadColorAndModelVC.swift in Sources */,
 				A6D20D9F237D9F52002D5580 /* ChatVC.swift in Sources */,
 				A6D20DAD237EE731002D5580 /* Authservice.swift in Sources */,
-				A6506EA3245F3C1D005B2AB9 /* userContents.swift in Sources */,
 				A6D20DAA237E8CAE002D5580 /* insetTxtField.swift in Sources */,
 				A6D20DA6237DA85F002D5580 /* SigninVC.swift in Sources */,
 				A6FD3B362383C7EC001F8676 /* Message.swift in Sources */,
@@ -477,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW3486MABY;
 				INFOPLIST_FILE = streetParker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -500,6 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LW3486MABY;
 				INFOPLIST_FILE = streetParker/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

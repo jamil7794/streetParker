@@ -27,9 +27,15 @@ class SigninVC: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear SigninVC")
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if Auth.auth().currentUser != nil{
+            print("Auth.auth().currentUser in SigninVC")
+            let pvc = self.presentedViewController
+            self.dismiss(animated: true) {
+                pvc?.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     
@@ -44,7 +50,26 @@ class SigninVC: UIViewController {
                 
                 if success {
                     print("Logged In successfully")
-                    self.dismiss(animated: true, completion: nil)
+                    Dataservice.instance.deleteAllDataFromCoreData { (complete) in
+                        if complete {
+                            
+                        }else{
+                            
+                        }
+                    }
+                    //self.presentingViewController?.dismiss(animated: true, completion: nil)
+                    let pvc = self.presentingViewController
+                    Dataservice.instance.save(forEmail: self.emailField.text!) { (success) in
+                        if success {
+                            print("SIgninVC: Saved")
+                        }else{
+                            print("SignedinVC: Not Saved")
+                        }
+                    }
+                    self.dismiss(animated: true) {
+                        pvc?.dismiss(animated: true, completion: nil)
+                    }
+                    
                 }else{
                     print(error?.localizedDescription as! String)
                 }
@@ -53,9 +78,17 @@ class SigninVC: UIViewController {
                     
                     if success {
                         Authservice.instance.loginUser(withEmail: self.emailField.text!, andPassword: self.passwordField.text!, loginComplete: { (success, nil) in
-                            self.dismiss(animated: true, completion: nil)
+                            
                             print("Successfully registered user")
+                            //self.dismiss(animated: true, completion: nil)
                             //self.performSegue(withIdentifier: "SigninToAuth", sender: self)
+                            if #available(iOS 13.0, *) {
+                                let UploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC")
+                                UploadVC?.modalPresentationStyle = .fullScreen
+                                self.present(UploadVC!, animated: true, completion: nil)
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         })
                     }else{
                         print(registrationUser?.localizedDescription as! String)
@@ -68,6 +101,12 @@ class SigninVC: UIViewController {
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.destination is uploadColorAndModelVC {
+            let vc = segue.destination as? uploadColorAndModelVC
+            vc?.emailValue = 1
+        }
+    }
 }
 
 extension SigninVC: UITextFieldDelegate {
