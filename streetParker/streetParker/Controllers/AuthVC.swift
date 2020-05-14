@@ -67,7 +67,6 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
 //        }
         
         activityIndication.stopAnimating()
-        
     }
     
     
@@ -109,10 +108,10 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         
         if Auth.auth().currentUser != nil {
             if emailLogged == 1{
+                activityIndication.stopAnimating()
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        //activityIndication.stopAnimating()
     }
     
 
@@ -204,7 +203,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
         })
         
         
-    
+        activityIndication.stopAnimating()
     
     }
     
@@ -283,100 +282,10 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                     print("Registration error \(error?.localizedDescription)")
                 }
             }
+            self.activityIndication.stopAnimating()
         }
         
-        
-//        Dataservice.instance.printAllEmails(forEmail: self.email) { (emails) in
-//                            for em in emails {
-//                                if em == self.email {
-//
-//                                    Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
-//                                        if success {
-//                                            print("AuthVC: Google User Logged in as " + self.name)
-//
-////                                            Dataservice.instance.deleteAllDataFromCoreData { (complete) in
-////                                                if complete {
-////                                                    print("Core Data Objects deleted")
-////                                                }else {
-////                                                    print("Couldn't delete Core Data Objects")
-////                                                }
-////                                            }
-//
-//
-//                                            compatble = true
-////                                            self.save { (complete) in
-////                                                if complete {
-////                                                    self.dismiss(animated: true, completion: nil)
-////                                                }
-////                                            }
-//                                            self.activityIndication.stopAnimating()
-//
-//                                        }else{
-//                                            print("Google User Logging ERROR: " + error!.localizedDescription)
-//                                        }
-//                                    }
-//
-//                                }else{
-//                                    print(em + "   " + self.email + " not compatible")
-//
-//                                }
-//                            }
-//            if (compatble == false){
-//                print("Compatible: \(compatble)")
-//                print("email: \(self.email)")
-//                print("Name: \(self.name)")
-//                print("googlePass: \(googlePass)")
-//
-//                Authservice.instance.registerSocialUser(withEmail: self.email, withName: self.name, andPassword: googlePass) { (success, error) in
-//
-//                    if success {
-//                        print("Google User Created: " + self.email)
-//
-//
-//
-//                        Authservice.instance.loginSocialUser(withEmail: self.email, andPassword: googlePass) { (success, error) in
-//                            if success {
-//                                print("AuthVC: Google User Logged in as " + self.name)
-//
-//                                Dataservice.instance.deleteAllDataFromCoreData { (complete) in
-//                                        if complete {
-//                                            print("Core Data Objects deleted")
-//                                        }else {
-//                                            print("Couldn't delete Core Data Objects")
-//                                        }
-//                                }
-//
-//
-//                                compatble = true
-//                                Dataservice.instance.save(forEmail: (Auth.auth().currentUser?.email)!) { (complete) in
-//                                    if complete {
-//                                        let pvc = self.presentingViewController
-//                                        self.dismiss(animated: true) {
-//                                            if #available(iOS 13.0, *) {
-//                                                let UploadVC = self.storyboard?.instantiateViewController(withIdentifier: "uploadVC")
-//                                                UploadVC?.modalPresentationStyle = .fullScreen
-//                                                pvc?.present(UploadVC!, animated: true, completion: nil)
-//                                            } else {
-//                                                // Fallback on earlier versions
-//                                            }
-//                                        }
-//
-//                                    }
-//                                }
-//
-//
-//                            }else{
-//                                print("Google User Logging ERROR: " + error!.localizedDescription)
-//                            }
-//                        }
-//                    }else{
-//                        print("Google User Creation ERROR: " + error!.localizedDescription)
-//                    }
-//                }
-//            }
-//        }
-        
-         func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
+        func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
                       withError error: Error!) {
 //               Perform any operations when the user disconnects from app here.
 //               ...
@@ -388,7 +297,7 @@ class AuthVC: UIViewController, SFSafariViewControllerDelegate, LoginButtonDeleg
                         print("Couldn't delete Core Data Objects")
                     }
                 }
-            }
+        }
         
         
     }
