@@ -24,7 +24,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
     var periph: CBPeripheral!
     var name: String?
     var email: String?
-//    var user: userContents?
+
     
     
     @IBOutlet weak var button: UIButton!
@@ -48,6 +48,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
             break
         case .poweredOff:
             print("Bluetooth is Off.")
+            
             break
         case .resetting:
             break
@@ -61,6 +62,7 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
             break
         }
     }
+    
     
     
     override func viewDidLoad() {
@@ -86,11 +88,19 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
         
         
         centralManager = CBCentralManager(delegate: self, queue: nil)
-        if selectDevice(audioSession: blueoothh) == true {
-            print("HandsFree exist: \(peripheralName!)")
-            print("Peripheral UID: \(peripheralUID!)")
-        }else{
-            print("HandsFree doesn't exist")
+//        if selectDevice(audioSession: blueoothh) == true {
+//            print("HandsFree exist: \(peripheralName!)")
+//            print("Peripheral UID: \(peripheralUID!)")
+//        }else{
+//            print("HandsFree doesn't exist")
+//        }
+        
+        Dataservice.instance.checkForBluetoothConnection { (device) in
+            if device {
+                print("Device Found")
+            }else{
+                print("Device not Found")
+            }
         }
         
         
@@ -198,31 +208,50 @@ class FindVC: UIViewController, MGLMapViewDelegate, CBCentralManagerDelegate, CB
 //        print(peripheral.name)
 //    }
     
-    func selectDevice(audioSession: AVAudioSession) -> Bool {
-
-        var bluetoothExist = false
-        
-       
-        for output in audioSession.currentRoute.outputs {
-            print(output)
-
-            if output.portType == AVAudioSession.Port.bluetoothA2DP || output.portType == AVAudioSession.Port.bluetoothHFP || output.portType == AVAudioSession.Port.carAudio || output.portType == AVAudioSession.Port.usbAudio{
-                    bluetoothExist = true
-                peripheralName = output.portName
-                peripheralUID = output.uid
-            }else{
-                    bluetoothExist = false
-            }
-                
-            
-        }
-
-        if bluetoothExist == true {
-            return true
-        }else{
-            return false
-        }
-    }
+    
+    // MARK: - SelectDevice
+//    func selectDevice(audioSession: AVAudioSession) -> Bool {
+//
+//        var bluetoothExist = false
+//        
+//        do {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: AVAudioSession.CategoryOptions.allowBluetooth)
+//            try AVAudioSession.sharedInstance().setActive(true)
+//            
+//        } catch {
+//            print(error)
+//        }
+//        
+//       
+//        for output in audioSession.currentRoute.outputs {
+//            print(output)
+//
+//            
+//            
+// 
+//        
+//            if output.portType == AVAudioSession.Port.bluetoothHFP || output.portType == AVAudioSession.Port.carAudio {
+//                
+//                //|| output.portType == AVAudioSession.Port.usbAudio
+//                //<AVAudioSessionPortDescription: 0x282d3bbc0, type = BluetoothHFP; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tsco; selectedDataSource = (null)>
+////                HandsFree exist: HandsFreeLink
+////                Peripheral UID: 74:D7:CA:EB:C0:A2-tsco
+////                2020-05-23 23:02:46.939377-0400 streetParker[370:21202]
+//                bluetoothExist = true
+//                peripheralName = output.portName
+//                peripheralUID = output.uid
+//            }else{
+//                bluetoothExist = false
+//            }
+//            
+//        }
+//
+//        if bluetoothExist == true {
+//            return true
+//        }else{
+//            return false
+//        }
+//    }
 
 }
 

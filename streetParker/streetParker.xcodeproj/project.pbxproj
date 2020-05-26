@@ -192,8 +192,8 @@
 				A6BB77F6237C5D910092A463 /* Sources */,
 				A6BB77F7237C5D910092A463 /* Frameworks */,
 				A6BB77F8237C5D910092A463 /* Resources */,
-				D85051FEAD66F289F0AB9C41 /* [CP] Embed Pods Frameworks */,
-				1A8F373CF033130A0628E3B1 /* [CP] Copy Pods Resources */,
+				BCC9E47D8A40BE5210EF376F /* [CP] Embed Pods Frameworks */,
+				750A5BFD4E69EE3406CE6B7F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -253,7 +253,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1A8F373CF033130A0628E3B1 /* [CP] Copy Pods Resources */ = {
+		750A5BFD4E69EE3406CE6B7F /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -270,7 +270,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-streetParker/Pods-streetParker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D85051FEAD66F289F0AB9C41 /* [CP] Embed Pods Frameworks */ = {
+		BCC9E47D8A40BE5210EF376F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

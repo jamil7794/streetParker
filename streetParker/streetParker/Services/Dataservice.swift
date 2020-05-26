@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import CoreData
+import AVFoundation
 
 let DB_BASE = Database.database().reference()
 
@@ -100,6 +101,35 @@ class Dataservice{
                     }
                 }
         
+    }
+    
+    func checkForBluetoothConnection(completion: (_ finished: Bool) -> ()){
+        let audioSession = AVAudioSession()
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playAndRecord, options: AVAudioSession.CategoryOptions.allowBluetooth)
+            try AVAudioSession.sharedInstance().setActive(true)
+                    
+        } catch {
+            print(error)
+        }
+                
+               
+        for output in audioSession.currentRoute.outputs {
+                    print(output)
+
+            if output.portType == AVAudioSession.Port.bluetoothHFP || output.portType == AVAudioSession.Port.carAudio {
+
+                print("Bluetooth HFP Found: \(output.portName)")
+                print("Bluetooth HFP Device UUID: \(output.uid)")
+                completion(true)
+            }else{
+                print("Bluetooth HFP not found")
+                completion(false)
+            }
+                    
+        }
+
     }
 
     func fetchUserInfo(handler: @escaping (_ name: String) -> ()){

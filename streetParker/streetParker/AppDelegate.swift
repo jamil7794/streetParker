@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
            
         }
         
-        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
         return true
     }
     
@@ -80,8 +80,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         let familyName = user.profile.familyName
         let email = user.profile.email
     }
-    
-    
+    // MARK: - Background Fetch
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        Dataservice.instance.checkForBluetoothConnection { (device) in
+            if device {
+                print("Device Found")
+            }else{
+                print("Device not Found")
+            }
+            completionHandler(.newData)
+        }
+        
+        
+    }
     
 //    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
 //              withError error: Error!) {
@@ -103,10 +115,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
     }
-
+    // MARK: - App entered in Background
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        print("App has entered in background")
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
