@@ -7,14 +7,14 @@ target 'streetParker' do
    use_frameworks!
 
   # Pods for streetParker
-    
-   pod 'Firebase/Core'
-   pod 'Firebase/Database'
-   pod 'Firebase/Auth'
-   pod 'MapboxNavigation'
-   pod 'FBSDKLoginKit/Swift'
-   pod 'FBSDKLoginKit/Swift'
-   pod 'FBSDKCoreKit/Swift'
-   pod 'FBSDKShareKit/Swift'
-   pod 'GoogleSignIn'
+       pod 'Firebase/Core'
+       pod 'Firebase/Database'
+       pod 'Firebase/Auth'
+       pod 'MapboxNavigation'
+       pod 'FBSDKLoginKit/Swift'
+       pod 'FBSDKLoginKit/Swift'
+       pod 'FBSDKCoreKit/Swift'
+       pod 'FBSDKShareKit/Swift'
+       pod 'GoogleSignIn'
+
 end

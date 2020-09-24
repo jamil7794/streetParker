@@ -47,7 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
            
         }
         
-        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        UIApplication.shared.setMinimumBackgroundFetchInterval(30)
+        UIApplication.backgroundFetchIntervalMinimum
         return true
     }
     
@@ -87,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
             if device {
                 print("Device Found")
             }else{
-                print("Device not Found")
+                print("Device disconnected Found")
             }
             completionHandler(.newData)
         }
