@@ -49,6 +49,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         
         UIApplication.shared.setMinimumBackgroundFetchInterval(30)
         UIApplication.backgroundFetchIntervalMinimum
+        
+        
         return true
     }
     

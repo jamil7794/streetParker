@@ -1,0 +1,26 @@
+App has entered in background
+2020-09-25 00:20:20.584897-0400 streetParker[15664:3213757] [connection] nw_read_request_report [C3] Receive failed with error "Software caused connection abort"
+Error Domain=NSOSStatusErrorDomain Code=560557684 "(null)"
+<AVAudioSessionPortDescription: 0x2831ec8b0, type = BluetoothA2DPOutput; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tacl; selectedDataSource = (null)>
+Bluetooth HFP not found
+Device disconnected Found
+<AVAudioSessionPortDescription: 0x2831133e0, type = BluetoothHFP; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tsco; selectedDataSource = (null)>
+Bluetooth HFP Found: HandsFreeLink
+Bluetooth HFP Device UUID: 74:D7:CA:EB:C0:A2-tsco
+Device Found
+App has entered in background
+2020-09-25 00:20:45.002952-0400 streetParker[15664:3213764] [connection] nw_read_request_report [C11] Receive failed with error "Software caused connection abort"
+Error Domain=NSOSStatusErrorDomain Code=560557684 "(null)"
+<AVAudioSessionPortDescription: 0x2831ee7b0, type = BluetoothA2DPOutput; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tacl; selectedDataSource = (null)>
+Bluetooth HFP not found
+Device disconnected Found
+<AVAudioSessionPortDescription: 0x2831e1a70, type = BluetoothHFP; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tsco; selectedDataSource = (null)>
+Bluetooth HFP Found: HandsFreeLink
+Bluetooth HFP Device UUID: 74:D7:CA:EB:C0:A2-tsco
+Device Found
+App has entered in background
+2020-09-25 00:21:11.198768-0400 streetParker[15664:3213754] [connection] nw_read_request_report [C14] Receive failed with error "Software caused connection abort"
+Error Domain=NSOSStatusErrorDomain Code=560557684 "(null)"
+<AVAudioSessionPortDescription: 0x2831ed190, type = BluetoothA2DPOutput; name = HandsFreeLink; UID = 74:D7:CA:EB:C0:A2-tacl; selectedDataSource = (null)>
+Bluetooth HFP not found
+Device disconnected Found
